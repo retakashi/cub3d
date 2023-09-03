@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 17:40:19 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/03 18:36:04 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,11 @@
 # include "libft.h"
 
 # define KEY_ESC 53
-# define KEY_Q 12
 # define KEY_W 13
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
-# define KEY_UP 126
 # define KEY_LEFT 123
-# define KEY_DOWN 125
 # define KEY_RIGHT 124
 
 # define SIZE 32
@@ -67,6 +64,24 @@ typedef struct s_vector
 	size_t	y;
 }	t_vector;
 
+typedef struct s_wall
+{
+	void	*east_texture;
+	void	*west_texture;
+	void	*north_texture;
+	void	*south_texture;
+}	t_wall;
+
+typedef struct s_game
+{
+	void	*ptr;
+	void	*win_ptr;
+	int		width;
+	int		height;
+	t_wall	*wall;
+	t_map	*map;
+}	t_game;
+
 
 
 bool		is_cub_file(char *filename);
@@ -75,6 +90,8 @@ int			count_map_height(char **file);
 bool		check_map(t_map *map);
 void		get_file(char *file, t_map *map, t_header *header);
 
-bool		check_reach_objs(t_map *mp);
+void		init_game(t_game *game, t_map *map, t_header *header);
+int			deal_key(int keycode, t_game *game);
+int			end_game(t_game *game);
 
 #endif

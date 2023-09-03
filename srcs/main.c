@@ -6,13 +6,14 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 17:43:38 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/03 18:36:13 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 static void	cub3d(char *file);
+static void	start_game(t_map *map, t_header *header);
 
 int	main(int argc, char **argv)
 {
@@ -38,24 +39,21 @@ static void	cub3d(char *file)
 	}
 	if (!check_map(&map))
 		exit(EXIT_FAILURE); // freeする？？
-	// start_game(&map);
+	start_game(&map, &header);
 	return ;
 }
 
-// static void	start_game(t_map *map)
-// {
-// 	t_game	*game;
+static void	start_game(t_map *map, t_header *header)
+{
+	t_game	game;
 
-// 	game = init_game(map);
-// 	game->win_ptr = mlx_new_window(game->ptr, \
-// 		game->width, game->height, "cub3d");
-// 	if (game->win_ptr == NULL)
-// 		ft_error("Mlx window init failed");
-// 	mlx_loop_hook(game->ptr, print_window, game);
-// 	mlx_key_hook(game->win_ptr, deal_key, game);
-// 	mlx_hook(game->win_ptr, 17, 0, end_game, game);
-// 	ft_printf("Game start!!\n");
-// 	ft_printf("Pick up items and make the ghost come to life in his grave!\n");
-// 	mlx_loop(game->ptr);
-// 	return ;
-// }
+	init_game(&game, map, header);
+	game.win_ptr = mlx_new_window(game.ptr, game.width, game.height, "cub3d");
+	if (game.win_ptr == NULL)
+		ft_error("Mlx window init failed");
+	// mlx_loop_hook(game.ptr, print_window, game);
+	mlx_key_hook(game.win_ptr, deal_key, &game);
+	mlx_hook(game.win_ptr, 17, 0, end_game, &game);
+	mlx_loop(game.ptr);
+	return ;
+}
