@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 16:06:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 17:18:44 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:22:53 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ static void	get_header(char **file, t_header *header)
 			header->ceiling_color = ft_strdup(file[i] + 2);
 		else if (!ft_strcmp(file[i], "F"))
 			header->floor_color = ft_strdup(file[i] + 2);
+		else
+			ft_error("Invalid header");
 		i++;
 	}
 	return ;

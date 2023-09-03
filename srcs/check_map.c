@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 15:50:47 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:32:50 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,7 @@ bool	check_map(char *map)
 	if (!check_factors(map))
 	{
 		ft_printf("Error\n");
-		if (!check_factors(map))
-			ft_printf("Invalid map.");
-		// else if (!check_wall(map))
-		// 	ft_printf("Incorrect walls placement.");
-		// else
-		// 	ft_printf("Cannot reach all objects.");
+		ft_printf("Invalid map.");
 		return (false);
 	}
 	return (true);
