@@ -1,0 +1,8 @@
+.vscode
+.DS_Store
+a.out
+img
+maps
+*.o
+*.d
+cub3D
