@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 17:13:56 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:43:38 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,8 @@ static void	cub3d(char *file)
 		for (int i = 0; map.map[i] != NULL; i++)
 			ft_printf("%s\n", map.map[i]);
 	}
-	// map.width = count_map_width(map.map); // 2次元で確保する必要あり？？
-	// if (!check_map(&map))
-	// {
-	// 	ft_free(&map);
-	// 	exit(EXIT_FAILURE);
-	// }
+	if (!check_map(&map))
+		exit(EXIT_FAILURE); // freeする？？
 	// start_game(&map);
 	return ;
 }

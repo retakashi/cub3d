@@ -6,17 +6,17 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 17:33:37 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:41:23 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static bool	check_factors(char *map);
+static bool	check_factors(t_map *map);
 // static bool	check_wall(t_map *map);
 
 /* wallのcheck関数入れるか?? */
-bool	check_map(char *map)
+bool	check_map(t_map *map)
 {
 	if (!check_factors(map))
 	{
@@ -27,19 +27,25 @@ bool	check_map(char *map)
 	return (true);
 }
 
-static bool	check_factors(char *map)
+static bool	check_factors(t_map *map)
 {
-	size_t	i;
-	size_t	start;
+	int	i;
+	int	j;
+	int	start;
 
 	i = 0;
 	start = 0;
-	while (map[i] != '\0')
+	while (map->map[i] != NULL)
 	{
-		if (map[i] == 'N' || map[i] == 'S' || map[i] == 'W' || map[i] == 'E')
-			start++;
-		else if (map[i] != '1' && map[i] != '0' && map[i] != '\n' && map[i] != ' ')
-			return (false);
+		j = 0;
+		while (map->map[i][j] != '\0')
+		{
+			if (map->map[i][j] == 'N' || map->map[i][j] == 'S' || map->map[i][j] == 'W' || map->map[i][j] == 'E')
+				start++;
+			else if (map->map[i][j] != '1' && map->map[i][j] != '0' && map->map[i][j] != '\n' && map->map[i][j] != ' ')
+				return (false);
+			j++;
+		}
 		i++;
 	}
 	if (start != 1)

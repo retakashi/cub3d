@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 17:17:23 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:40:19 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_vector
 bool		is_cub_file(char *filename);
 size_t		count_map_width(char *map);
 int			count_map_height(char **file);
-bool		check_map(char *map);
+bool		check_map(t_map *map);
 void		get_file(char *file, t_map *map, t_header *header);
 
 bool		check_reach_objs(t_map *mp);
