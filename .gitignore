@@ -5,4 +5,5 @@ img
 maps
 *.o
 *.d
+*.a
 cub3D
