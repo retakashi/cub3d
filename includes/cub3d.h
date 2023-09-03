@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 14:12:25 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:14:10 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 
 # define SIZE 32
 
+# define DEBUG 1
+# define HEADER_LEN 6
 enum e_direction
 {
 	UP,
@@ -43,11 +45,21 @@ enum e_direction
 
 typedef struct s_map
 {
-	char	*map;
+	char	**map;
 	size_t	width;
-	size_t	height;
+	// size_t	height;
 	int		items;
 }	t_map;
+
+typedef struct s_header
+{
+	char	*east_texture_path;
+	char	*west_texture_path;
+	char	*north_texture_path;
+	char	*south_texture_path;
+	char	*ceiling_color;
+	char	*floor_color;
+}	t_header;
 
 typedef struct s_vector
 {
@@ -55,62 +67,13 @@ typedef struct s_vector
 	size_t	y;
 }	t_vector;
 
-typedef struct s_objs
-{
-	void	*wall;
-	void	*exit;
-	void	*collectible;
-	void	*floor;
-}	t_objs;
 
-typedef struct s_player
-{
-	void	*player_down;
-	void	*player_up;
-	void	*player_left;
-	void	*player_right;
-	int		dir;
-	int		x;
-	int		y;
-	int		pre_x;
-	int		pre_y;
-	int		collects;
-}	t_player;
 
-typedef struct s_game
-{
-	void		*ptr;
-	void		*win_ptr;
-	int			width;
-	int			height;
-	t_map		map_info;
-	t_objs		objs;
-	t_player	player;
-	int			count;
-	t_vector	*items;
-	int			turn;
-	bool		clear;
-}	t_game;
-
-bool		is_ber_file(char *filename);
+bool		is_cub_file(char *filename);
 size_t		count_map_width(char *map);
-size_t		count_map_height(char *map);
-bool		check_map(t_map *map);
-char		*get_map(char *file);
-
-t_objs		init_objs(t_game *game);
-void		destroy_objs(t_game *game);
-void		put_obj(t_game *game, char c, int x, int y);
-
-t_player	init_plr(t_game *game);
-void		destroy_plr(t_game *game);
-void		plr_move(t_game *game, int dir);
-void		put_plr(t_game *game);
-
-t_game		*init_game(t_map *mp);
-int			print_window(t_game *game);
-int			deal_key(int keycode, t_game *game);
-int			end_game(t_game *game);
+int			count_map_height(char **file);
+bool		check_map(char *map);
+void		get_file(char *file, t_map *map, t_header *header);
 
 bool		check_reach_objs(t_map *mp);
 

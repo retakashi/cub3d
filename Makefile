@@ -4,6 +4,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -MMD -MP
 CFLAGS += $(INCFLAGS)
 
+
 INCDIR	=	./includes
 INC	=	$(addprefix -I,$(INCDIR)) 
 
@@ -42,7 +43,7 @@ fclean: clean
 
 re: fclean all
 
-debug: CFLAGS += -g -fsanitize=address,leak
+debug: CFLAGS += -g -fsanitize=address
 debug: re
 
 .PHONY: all clean fclean re bonus norm debug
