@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 17:32:50 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:33:37 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static bool	check_factors(char *map);
 // static bool	check_wall(t_map *map);
 
+/* wallのcheck関数入れるか?? */
 bool	check_map(char *map)
 {
 	if (!check_factors(map))
