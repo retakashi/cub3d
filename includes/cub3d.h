@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 17:14:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:17:23 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ enum e_direction
 typedef struct s_map
 {
 	char	**map;
-	size_t	width;
-	// size_t	height;
+	int		width;
+	int		height;
 	int		items;
 }	t_map;
 

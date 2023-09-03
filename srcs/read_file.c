@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 16:06:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 17:13:27 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/03 17:18:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ static void	get_map(char **file, t_map *map)
 	if (map->map == NULL)
 		ft_error("Malloc failed");
 	/* 初期位置が確定しているのかわからん。要検討 */
-	i_file = 7;
+	i_file = 6;
 	i_map = 0;
 	while (file[i_file] != NULL)
 	{
