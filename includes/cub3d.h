@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/05 15:37:55 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/05 18:07:50 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define KEY_RIGHT 124
 
 # define SIZE 32
+# define WIDTH 1000
+# define HEIGHT 1000
 
 # define DEBUG 1
 # define HEADER_LEN 6
@@ -39,6 +41,17 @@ enum e_direction
 	DOWN,
 	LEFT,
 	RIGHT
+};
+
+enum
+{
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
 };
 
 typedef struct s_map
@@ -73,6 +86,7 @@ typedef struct s_wall
 	void	*south_texture;
 }	t_wall;
 
+// 視野角90で固定
 typedef struct s_player
 {
 	t_vector	pos;
@@ -100,7 +114,9 @@ void		get_file(char *file, t_map *map, t_header *header);
 void		start_game(t_map *map, t_header *header);
 int			end_game(t_game *game);
 
-void	init_player(t_game *game);
-void	set_position(t_game *game, int direction);
+void		init_player(t_game *game);
+void		set_position(t_game *game, int direction);
+
+void		set_vector(t_vector *vector, double x, double y);
 
 #endif

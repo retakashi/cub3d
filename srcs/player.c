@@ -6,13 +6,14 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:06:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/05 15:45:57 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/05 18:09:33 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 static bool	check_nowall(t_game *game, int direction);
+static void	init_triangle(t_player *player, char c);
 
 void	init_player(t_game *game)
 {
@@ -29,18 +30,43 @@ void	init_player(t_game *game)
 		{
 			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
 			{
-				game->player.pos.x = (double)i;
-				game->player.pos.y = (double)j;
+				set_vector(&game->player.pos, i, j);
+				init_triangle(&game->player, map[i][j]);
 			}
 			j++;
 		}
 		i++;
 	}
-	// 方角で場合分けする必要あると思う
-	game->player.dir.x = 0;
-	game->player.dir.y = 0;
-	game->player.plane.x = 0;
-	game->player.plane.y = 0;
+}
+
+static void	init_triangle(t_player *player, char c)
+{
+	if (c == 'N')
+	{
+		set_vector(&player->dir, 0, 1);
+		set_vector(&player->plane, 1, 0);
+	}
+	if (c == 'S')
+	{
+		set_vector(&player->dir, 0, -1);
+		set_vector(&player->plane, -1, 0);
+	}
+	if (c == 'W')
+	{
+		set_vector(&player->dir, -1, 0);
+		set_vector(&player->plane, 0, 1);
+	}
+	if (c == 'E')
+	{
+		set_vector(&player->dir, 1, 0);
+		set_vector(&player->plane, 0, -1);
+	}
+}
+
+void	set_vector(t_vector *vector, double x, double y)
+{
+	vector->x = x;
+	vector->y = y;
 }
 
 void	set_position(t_game *game, int direction)
