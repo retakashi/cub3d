@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 18:36:04 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/05 15:15:49 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ typedef struct s_header
 
 typedef struct s_vector
 {
-	size_t	x;
-	size_t	y;
+	double	x;
+	double	y;
 }	t_vector;
 
 typedef struct s_wall
@@ -72,17 +72,23 @@ typedef struct s_wall
 	void	*south_texture;
 }	t_wall;
 
+typedef struct s_player
+{
+	t_vector	pos;
+	t_vector	dir;
+	t_vector	plane;
+}	t_player;
+
 typedef struct s_game
 {
-	void	*ptr;
-	void	*win_ptr;
-	int		width;
-	int		height;
-	t_wall	*wall;
-	t_map	*map;
+	void		*ptr;
+	void		*win_ptr;
+	int			width;
+	int			height;
+	t_wall		*wall;
+	t_player	player;
+	t_map		*map;
 }	t_game;
-
-
 
 bool		is_cub_file(char *filename);
 size_t		count_map_width(char *map);
@@ -90,8 +96,9 @@ int			count_map_height(char **file);
 bool		check_map(t_map *map);
 void		get_file(char *file, t_map *map, t_header *header);
 
-void		init_game(t_game *game, t_map *map, t_header *header);
-int			deal_key(int keycode, t_game *game);
+void		start_game(t_map *map, t_header *header);
 int			end_game(t_game *game);
+
+void	init_player(t_game *game);
 
 #endif

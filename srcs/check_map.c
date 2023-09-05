@@ -6,19 +6,18 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 18:23:46 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/05 15:00:59 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 static bool	check_factors(t_map *map);
-// static bool	check_wall(t_map *map);
+static bool	check_wall(t_map *map);
 
-/* wallのcheck関数入れるか?? */
 bool	check_map(t_map *map)
 {
-	if (!check_factors(map))
+	if (!check_factors(map) || !check_wall(map))
 	{
 		printf("Error\n");
 		printf("Invalid map.");
@@ -27,28 +26,34 @@ bool	check_map(t_map *map)
 	return (true);
 }
 
+static bool	check_wall(t_map *map)
+{
+	(void)map;
+	return (true);
+}
+
 static bool	check_factors(t_map *map)
 {
 	int	i;
 	int	j;
-	int	start;
+	int	player;
 
 	i = 0;
-	start = 0;
+	player = 0;
 	while (map->map[i] != NULL)
 	{
 		j = 0;
 		while (map->map[i][j] != '\0')
 		{
 			if (map->map[i][j] == 'N' || map->map[i][j] == 'S' || map->map[i][j] == 'W' || map->map[i][j] == 'E')
-				start++;
+				player++;
 			else if (map->map[i][j] != '1' && map->map[i][j] != '0' && map->map[i][j] != '\n' && map->map[i][j] != ' ')
 				return (false);
 			j++;
 		}
 		i++;
 	}
-	if (start != 1)
+	if (player != 1)
 		return (false);
 	return (true);
 }
