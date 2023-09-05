@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/05 15:15:49 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/05 15:37:55 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 
 # define DEBUG 1
 # define HEADER_LEN 6
+
 enum e_direction
 {
 	UP,
@@ -100,5 +101,6 @@ void		start_game(t_map *map, t_header *header);
 int			end_game(t_game *game);
 
 void	init_player(t_game *game);
+void	set_position(t_game *game, int direction);
 
 #endif

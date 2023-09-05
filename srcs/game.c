@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/05 15:14:57 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/05 15:39:01 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ static int	deal_key(int keycode, t_game *game)
 	if (keycode == KEY_ESC)
 		end_game(game);
 	if (keycode == KEY_W)
-		printf("W\n");
-	if (keycode == KEY_A)
-		printf("A\n");
+		set_position(game, UP);
 	if (keycode == KEY_S)
-		printf("S\n");
+		set_position(game, DOWN);
+	if (keycode == KEY_A)
+		set_position(game, LEFT);
 	if (keycode == KEY_D)
-		printf("D\n");
+		set_position(game, RIGHT);
 	if (keycode == KEY_LEFT)
 		printf("LEFT\n");
 	if (keycode == KEY_RIGHT)
