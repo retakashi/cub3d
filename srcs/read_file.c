@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 16:06:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 17:22:53 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/05 14:04:06 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ static void	get_header(char **file, t_header *header)
 	while (i < 6)
 	{
 		/* +3でいいか確認する */
-		if (!ft_strcmp(file[i], "EA"))
+		if (!ft_strncmp(file[i], "EA ", 3))
 			header->east_texture_path = ft_strdup(file[i] + 3);
-		else if (!ft_strcmp(file[i], "WE"))
+		else if (!ft_strncmp(file[i], "WE ", 3))
 			header->west_texture_path = ft_strdup(file[i] + 3);
-		else if (!ft_strcmp(file[i], "NO"))
+		else if (!ft_strncmp(file[i], "NO ", 3))
 			header->north_texture_path = ft_strdup(file[i] + 3);
-		else if (!ft_strcmp(file[i], "SO"))
+		else if (!ft_strncmp(file[i], "SO ", 3))
 			header->south_texture_path = ft_strdup(file[i] + 3);
-		else if (!ft_strcmp(file[i], "C"))
+		else if (!ft_strncmp(file[i], "C ", 2))
 			header->ceiling_color = ft_strdup(file[i] + 2);
-		else if (!ft_strcmp(file[i], "F"))
+		else if (!ft_strncmp(file[i], "F ", 2))
 			header->floor_color = ft_strdup(file[i] + 2);
 		else
 			ft_error("Invalid header");
