@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/05 18:08:22 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/06 18:11:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	start_game(t_map *map, t_header *header)
 	game.win_ptr = mlx_new_window(game.ptr, game.width, game.height, "cub3d");
 	if (game.win_ptr == NULL)
 		ft_error("Mlx window init failed");
-	// mlx_loop_hook(game.ptr, print_window, &game);
+	mlx_loop_hook(game.ptr, draw_window, &game);
 	mlx_hook(game.win_ptr, ON_KEYDOWN, 0, deal_key, &game);
 	mlx_hook(game.win_ptr, 17, 0, end_game, &game);
 	mlx_loop(game.ptr);
@@ -47,6 +47,7 @@ static void	init_game(t_game *game, t_map *map, t_header *header)
 	game->height = HEIGHT;
 }
 
+
 static int	deal_key(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
@@ -60,9 +61,15 @@ static int	deal_key(int keycode, t_game *game)
 	if (keycode == KEY_D)
 		set_position(game, RIGHT);
 	if (keycode == KEY_LEFT)
-		printf("LEFT\n");
+	{
+		set_vector(&game->player.dir, game->player.dir.x * cos(-ROTATE_SPEED) - game->player.dir.y * sin(-ROTATE_SPEED), game->player.dir.x * sin(-ROTATE_SPEED) + game->player.dir.y * cos(-ROTATE_SPEED));
+		set_vector(&game->player.plane, game->player.plane.x * cos(-ROTATE_SPEED) - game->player.plane.y * sin(-ROTATE_SPEED), game->player.plane.x * sin(-ROTATE_SPEED) + game->player.plane.y * cos(-ROTATE_SPEED));
+	}
 	if (keycode == KEY_RIGHT)
-		printf("RIGHT\n");
+	{
+		set_vector(&game->player.dir, game->player.dir.x * cos(ROTATE_SPEED) - game->player.dir.y * sin(ROTATE_SPEED), game->player.dir.x * sin(ROTATE_SPEED) + game->player.dir.y * cos(ROTATE_SPEED));
+		set_vector(&game->player.plane, game->player.plane.x * cos(ROTATE_SPEED) - game->player.plane.y * sin(ROTATE_SPEED), game->player.plane.x * sin(ROTATE_SPEED) + game->player.plane.y * cos(ROTATE_SPEED));
+	}
 	return (EXIT_SUCCESS);
 }
 

@@ -6,13 +6,14 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/05 15:16:04 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/06 18:09:22 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 static void	cub3d(char *file);
+
 int	main(int argc, char **argv)
 {
 	if (argc < 2)

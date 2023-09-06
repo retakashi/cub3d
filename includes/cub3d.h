@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/05 18:07:50 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/06 19:50:15 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 # define CUB3D_H
 # include <stdlib.h>
 # include <limits.h>
+# include <float.h>
 # include <stdarg.h>
 # include <unistd.h>
 # include <errno.h>
+# include <math.h>
 # include <mlx.h>
 # include "libft.h"
 
@@ -28,9 +30,13 @@
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
 
-# define SIZE 32
-# define WIDTH 1000
-# define HEIGHT 1000
+# define WALL_HEIGHT 50
+
+# define SIZE 64
+# define WIDTH 1280
+# define HEIGHT 960
+
+# define ROTATE_SPEED 0.05
 
 # define DEBUG 1
 # define HEADER_LEN 6
@@ -78,6 +84,12 @@ typedef struct s_vector
 	double	y;
 }	t_vector;
 
+typedef struct s_vector2
+{
+	int		x;
+	int		y;
+}	t_vector2;
+
 typedef struct s_wall
 {
 	void	*east_texture;
@@ -105,6 +117,26 @@ typedef struct s_game
 	t_map		*map;
 }	t_game;
 
+typedef struct s_ray
+{
+	t_vector	pos;
+	t_vector	side_distance;
+	t_vector	delta_distance;
+	t_vector2	step;
+	t_vector2	map;
+	int			side;
+	bool		hit;
+	double		perpendicular_wall_distance;
+}	t_ray;
+
+typedef struct s_image{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_image;
+
 bool		is_cub_file(char *filename);
 size_t		count_map_width(char *map);
 int			count_map_height(char **file);
@@ -118,5 +150,9 @@ void		init_player(t_game *game);
 void		set_position(t_game *game, int direction);
 
 void		set_vector(t_vector *vector, double x, double y);
+
+void		calculate_ray(t_game *game, t_ray *ray);
+
+int			draw_window(t_game *game);
 
 #endif
