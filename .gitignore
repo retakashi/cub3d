@@ -6,3 +6,4 @@ maps
 *.d
 *.a
 cub3D
+*.cpp

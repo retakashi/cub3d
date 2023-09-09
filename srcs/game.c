@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/06 18:11:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 14:17:47 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,16 @@ static int	deal_key(int keycode, t_game *game);
 void	start_game(t_map *map, t_header *header)
 {
 	t_game	game;
+	t_image	img;
 
 	init_game(&game, map, header);
 	game.win_ptr = mlx_new_window(game.ptr, game.width, game.height, "cub3d");
 	if (game.win_ptr == NULL)
 		ft_error("Mlx window init failed");
-	mlx_loop_hook(game.ptr, draw_window, &game);
+	// mlx_loop_hook(game.ptr, draw_window, &game);
+	img.img = mlx_new_image(game.ptr, WIDTH, HEIGHT);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	draw_window(&game, &img);
 	mlx_hook(game.win_ptr, ON_KEYDOWN, 0, deal_key, &game);
 	mlx_hook(game.win_ptr, 17, 0, end_game, &game);
 	mlx_loop(game.ptr);
