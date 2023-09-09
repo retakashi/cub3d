@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 15:04:49 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 15:07:47 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static int	deal_key(int keycode, t_game *game);
 
 static void	loop_game(t_game *game)
 {
-	// mlx_loop_hook(game->ptr, draw_window, game);
-	draw_window(game, game->img);
+	mlx_loop_hook(game->ptr, draw_window, game);
+	// draw_window(game);
 	mlx_hook(game->win_ptr, ON_KEYDOWN, DEFAULT, deal_key, game);
 	mlx_hook(game->win_ptr, ON_DESTROY, DEFAULT, end_game, game);
 	mlx_loop(game->ptr);

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 14:58:47 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 15:07:28 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ uint32_t	get_color_from_img(t_image img, int x, int y)
 		(y * img.line_length + x * (img.bits_per_pixel / 8)));
 }
 
-int	draw_window(t_game *game, t_image *img)
+int	draw_window(t_game *game)
 {
 	// t_ray	**ray;
 	// int		i;
@@ -47,10 +47,10 @@ int	draw_window(t_game *game, t_image *img)
 	{
 		for (int j = 0; j < 500; j++)
 		{
-			my_mlx_pixel_put(img, i, j, img->color);
+			my_mlx_pixel_put(game->img, i, j, game->img->color);
 		}
 	}
-	mlx_put_image_to_window(game->ptr, game->win_ptr, img->img, 0, 0);
+	mlx_put_image_to_window(game->ptr, game->win_ptr, game->img->img, 0, 0);
 	// ray = ft_calloc(game->width, sizeof(t_ray *));
 	// if (ray == NULL)
 	// 	ft_error("Malloc failed.");

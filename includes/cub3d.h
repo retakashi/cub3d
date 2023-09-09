@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 15:05:00 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 15:07:19 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,6 @@ void		set_vector(t_vector *vector, double x, double y);
 
 void		calculate_ray(t_game *game, t_ray *ray);
 
-int			draw_window(t_game *game, t_image *img);
+int			draw_window(t_game *game);
 
 #endif
