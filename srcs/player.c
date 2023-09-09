@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:06:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 16:08:49 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 20:04:10 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,6 @@ static void	init_vectors(t_player *player, char c)
 		set_vector(&player->dir, 1, 0);
 		set_vector(&player->plane, 0, -1);
 	}
-}
-
-void	set_vector(t_vector *vector, double x, double y)
-{
-	vector->x = x;
-	vector->y = y;
 }
 
 void	set_position(t_game *game, int direction)
