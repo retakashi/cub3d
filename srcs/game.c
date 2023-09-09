@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 15:07:47 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 15:16:37 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static int	deal_key(int keycode, t_game *game);
 static void	loop_game(t_game *game)
 {
 	mlx_loop_hook(game->ptr, draw_window, game);
-	// draw_window(game);
 	mlx_hook(game->win_ptr, ON_KEYDOWN, DEFAULT, deal_key, game);
 	mlx_hook(game->win_ptr, ON_DESTROY, DEFAULT, end_game, game);
 	mlx_loop(game->ptr);
@@ -30,7 +29,7 @@ void	start_game(t_map *map, t_header *header)
 	t_image	img;
 
 	init_game(&game, map, header);
-	game.win_ptr = mlx_new_window(game.ptr, game.width, game.height, "cub3d");
+	game.win_ptr = mlx_new_window(game.ptr, WIDTH, HEIGHT, "cub3d");
 	if (game.win_ptr == NULL)
 		ft_error("Mlx window init failed");
 	img.img = mlx_new_image(game.ptr, WIDTH, HEIGHT);
@@ -54,8 +53,6 @@ static void	init_game(t_game *game, t_map *map, t_header *header)
 	// game->wall->south_texture = header->south_texture_path;
 	// game->wall->east_texture = header->east_texture_path;
 	// game->wall->west_texture = header->west_texture_path;
-	game->width = WIDTH;
-	game->height = HEIGHT;
 }
 
 
