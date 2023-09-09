@@ -6,20 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 15:07:28 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 15:17:50 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-// void		my_mlx_pixel_put(t_game *game, int x, int y, int color)
-// {
-// 	char	*dst;
-// 	t_image	*img;
-
-// 	dst = game->ptr + (y * game-> + x * (img->bits_per_pixel / 8));
-// 	*(unsigned int*)dst = color;
-// }
 
 void		my_mlx_pixel_put(t_image *img, int x, int y, int color)
 {

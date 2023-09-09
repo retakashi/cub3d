@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 15:16:37 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 15:18:10 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,12 @@ static void	init_game(t_game *game, t_map *map, t_header *header)
 		ft_error("Mlx init failed.");
 	game->map = map;
 	init_player(game);
-	printf("[init]\n%f %f\n", game->player.pos.x, game->player.pos.y);
 	(void)header;
 	// game->wall->north_texture = header->north_texture_path;
 	// game->wall->south_texture = header->south_texture_path;
 	// game->wall->east_texture = header->east_texture_path;
 	// game->wall->west_texture = header->west_texture_path;
 }
-
 
 static int	deal_key(int keycode, t_game *game)
 {
