@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 15:16:25 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 15:25:14 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ typedef struct s_game
 	void		*ptr;
 	void		*win_ptr;
 	t_wall		*wall;
+	int			ceiling_color;
+	int			floor_color;
 	t_player	player;
 	t_map		*map;
 	t_image		*img;
@@ -156,5 +158,7 @@ void		set_vector(t_vector *vector, double x, double y);
 void		calculate_ray(t_game *game, t_ray *ray);
 
 int			draw_window(t_game *game);
+
+void	init_game(t_game *game, t_map *map, t_header *header);;
 
 #endif

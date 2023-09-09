@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 15:17:50 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 15:40:26 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,39 +30,34 @@ uint32_t	get_color_from_img(t_image img, int x, int y)
 int	draw_window(t_game *game)
 {
 	// t_ray	**ray;
-	// int		i;
-	// int		j;
+	int		i;
+	int		j;
 
-	(void)game;
-	for (int i = 0; i < 500; i++)
-	{
-		for (int j = 0; j < 500; j++)
-		{
-			my_mlx_pixel_put(game->img, i, j, game->img->color);
-		}
-	}
-	mlx_put_image_to_window(game->ptr, game->win_ptr, game->img->img, 0, 0);
-	// ray = ft_calloc(game->width, sizeof(t_ray *));
+	// ray = ft_calloc(WIDTH, sizeof(t_ray *));
 	// if (ray == NULL)
 	// 	ft_error("Malloc failed.");
-	// i = 0;
-	// while (i < game->width)
-	// {
-	// 	ray[i] = ft_calloc(game->height, sizeof(t_ray));
-	// 	if (ray[i] == NULL)
-	// 		ft_error("Malloc failed.");
-	// 	j = 0;
-	// 	while (j < game->height)
-	// 	{
-	// 		calculate_ray(game, &ray[i][j]);
-	// 		if (ray[i][j].hit == true)
-	// 			my_mlx_pixel_put(&img, i, j, 0x00FF0000);
-	// 		else if (ray[i][j].hit == false)
-	// 			my_mlx_pixel_put(&img, i, j, 0x000000FF);
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
-	// free_2d((void **)ray);
+	i = 0;
+	while (i < HEIGHT)
+	{
+		// ray[i] = ft_calloc(HEIGHT, sizeof(t_ray));
+		// if (ray[i] == NULL)
+		// 	ft_error("Malloc failed.");
+		j = 0;
+		while (j < WIDTH)
+		{
+			// calculate_ray(game, &ray[i][j]);
+			// if (ray[i][j].hit == true)
+			// 	my_mlx_pixel_put(game->img, i, j, 0x00FF0000);
+			// else if (ray[i][j].hit == false)
+			// 	my_mlx_pixel_put(game->img, i, j, 0x000000FF);
+			if (i < HEIGHT / 2)
+				my_mlx_pixel_put(game->img, j, i, game->ceiling_color);
+			else
+				my_mlx_pixel_put(game->img, j, i, game->floor_color);
+			j++;
+		}
+		i++;
+	}
+	mlx_put_image_to_window(game->ptr, game->win_ptr, game->img->img, 0, 0);
 	return (EXIT_SUCCESS);
 }
