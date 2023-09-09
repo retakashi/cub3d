@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 15:25:14 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 18:17:46 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ typedef struct s_image{
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int		color;
 }	t_image;
 
 typedef struct s_game
@@ -159,6 +158,7 @@ void		calculate_ray(t_game *game, t_ray *ray);
 
 int			draw_window(t_game *game);
 
-void	init_game(t_game *game, t_map *map, t_header *header);;
+void	init_game(t_game *game, t_map *map, t_header *header);
+// void	init_ray(t_game *game, t_ray *ray);
 
 #endif

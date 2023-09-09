@@ -6,14 +6,14 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:06:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/05 18:09:33 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 16:08:49 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 static bool	check_nowall(t_game *game, int direction);
-static void	init_triangle(t_player *player, char c);
+static void	init_vectors(t_player *player, char c);
 
 void	init_player(t_game *game)
 {
@@ -31,7 +31,7 @@ void	init_player(t_game *game)
 			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
 			{
 				set_vector(&game->player.pos, i, j);
-				init_triangle(&game->player, map[i][j]);
+				init_vectors(&game->player, map[i][j]);
 			}
 			j++;
 		}
@@ -39,7 +39,7 @@ void	init_player(t_game *game)
 	}
 }
 
-static void	init_triangle(t_player *player, char c)
+static void	init_vectors(t_player *player, char c)
 {
 	if (c == 'N')
 	{
@@ -79,7 +79,6 @@ void	set_position(t_game *game, int direction)
 		game->player.pos.x--;
 	else if (direction == RIGHT && check_nowall(game, direction))
 		game->player.pos.x++;
-	printf("[set_position]\n%f %f\n", game->player.pos.x, game->player.pos.y);
 }
 
 static bool	check_nowall(t_game *game, int direction)

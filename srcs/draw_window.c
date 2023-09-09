@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 15:53:26 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 18:12:15 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,20 @@ void	print_ceiling_and_floor(t_game *game)
 
 int	draw_window(t_game *game)
 {
-	// t_ray	**ray;
+	t_ray	*ray;
 	// int		i;
-	// int		j;
+	int		j;
 
+	ray = malloc(sizeof(t_ray));
+	if (ray == NULL)
+		ft_error("Malloc failed");
 	print_ceiling_and_floor(game);
+	j = 0;
+	while (j < WIDTH)
+	{
+		calculate_ray(game, ray);
+		j++;
+	}
 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->img->img, 0, 0);
 	return (EXIT_SUCCESS);
 }

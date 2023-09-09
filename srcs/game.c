@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 15:25:31 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 18:10:08 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	start_game(t_map *map, t_header *header)
 		ft_error("Mlx window init failed");
 	img.img = mlx_new_image(game.ptr, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	img.color = 0x00FF0000;
 	game.img = &img;
 	loop_game(&game);
 	return ;
@@ -55,13 +54,11 @@ static int	deal_key(int keycode, t_game *game)
 	{
 		set_vector(&game->player.dir, game->player.dir.x * cos(-ROTATE_SPEED) - game->player.dir.y * sin(-ROTATE_SPEED), game->player.dir.x * sin(-ROTATE_SPEED) + game->player.dir.y * cos(-ROTATE_SPEED));
 		set_vector(&game->player.plane, game->player.plane.x * cos(-ROTATE_SPEED) - game->player.plane.y * sin(-ROTATE_SPEED), game->player.plane.x * sin(-ROTATE_SPEED) + game->player.plane.y * cos(-ROTATE_SPEED));
-		game->img->color = 0x0000FF00;
 	}
 	if (keycode == KEY_RIGHT)
 	{
 		set_vector(&game->player.dir, game->player.dir.x * cos(ROTATE_SPEED) - game->player.dir.y * sin(ROTATE_SPEED), game->player.dir.x * sin(ROTATE_SPEED) + game->player.dir.y * cos(ROTATE_SPEED));
 		set_vector(&game->player.plane, game->player.plane.x * cos(ROTATE_SPEED) - game->player.plane.y * sin(ROTATE_SPEED), game->player.plane.x * sin(ROTATE_SPEED) + game->player.plane.y * cos(ROTATE_SPEED));
-		game->img->color = 0x000000FF;
 	}
 	return (EXIT_SUCCESS);
 }
