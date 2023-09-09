@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 14:29:29 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 14:58:47 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	draw_window(t_game *game, t_image *img)
 	{
 		for (int j = 0; j < 500; j++)
 		{
-			my_mlx_pixel_put(img, i, j, 0x00FF0000);
+			my_mlx_pixel_put(img, i, j, img->color);
 		}
 	}
 	mlx_put_image_to_window(game->ptr, game->win_ptr, img->img, 0, 0);

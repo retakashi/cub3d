@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 14:16:06 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/09 15:05:00 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 
 # define DEBUG 1
 # define HEADER_LEN 6
+
+# define DEFAULT 0
 
 enum e_direction
 {
@@ -106,6 +108,15 @@ typedef struct s_player
 	t_vector	plane;
 }	t_player;
 
+typedef struct s_image{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		color;
+}	t_image;
+
 typedef struct s_game
 {
 	void		*ptr;
@@ -115,6 +126,7 @@ typedef struct s_game
 	t_wall		*wall;
 	t_player	player;
 	t_map		*map;
+	t_image		*img;
 }	t_game;
 
 typedef struct s_ray
@@ -128,14 +140,6 @@ typedef struct s_ray
 	bool		hit;
 	double		perpendicular_wall_distance;
 }	t_ray;
-
-typedef struct s_image{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_image;
 
 bool		is_cub_file(char *filename);
 size_t		count_map_width(char *map);
