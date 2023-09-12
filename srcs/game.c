@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 15:25:46 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 15:48:33 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ static int	deal_key(int keycode, t_game *game)
 	if (keycode == KEY_D)
 		set_position(game, RIGHT);
 	if (keycode == KEY_LEFT)
-		set_field_of_view(&game->player, -ROTATE_SPEED); // minus逆では？
+		set_field_of_view(&game->player, ROTATE_SPEED); // minus逆では？
 	if (keycode == KEY_RIGHT)
-		set_field_of_view(&game->player, ROTATE_SPEED);
+		set_field_of_view(&game->player, -ROTATE_SPEED);
 	return (EXIT_SUCCESS);
 }
 

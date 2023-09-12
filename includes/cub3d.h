@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 15:26:47 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 15:58:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,6 @@ void		init_player(t_game *game);
 
 void		set_position(t_game *game, int direction);
 void		set_field_of_view(t_player *player, double fov);
-int			vectorlen(t_vector vector);
 
 void		set_vector(t_vector *vector, double x, double y);
 
@@ -157,7 +156,8 @@ void		calculate_ray(t_game *game, t_ray *ray);
 
 int			draw_window(t_game *game);
 
-void	init_game(t_game *game, t_map *map, t_header *header);
+void		init_game(t_game *game, t_map *map, t_header *header);
+double		vectorlen(t_vector vector);
 // void	init_ray(t_game *game, t_ray *ray);
 
 #endif
