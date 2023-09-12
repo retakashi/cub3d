@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 20:01:21 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 14:13:52 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,14 @@ void	print_ceiling_and_floor(t_game *game)
 	}
 }
 
-void	draw_wall(t_game *game, int start, int end, int x)
+void	draw_line(t_game *game, int start, int end, int x)
 {
 	int	j;
 
+	if (start < 0)
+		start = 0;
+	if (end >= HEIGHT)
+		end = HEIGHT - 1;
 	j = start;
 	while (j < end)
 	{
@@ -60,34 +64,34 @@ void	draw_wall(t_game *game, int start, int end, int x)
 	}
 }
 
+void	draw_wall(t_game *game, t_ray *ray)
+{
+	int		i;
+	int		win_height;
+	int		draw_start;
+	int		draw_end;
+
+	i = 0;
+	while (i < WIDTH)
+	{
+		calculate_ray(game, &ray[i]);
+		// win_height = (int)(WIDTH / 2 * vectorlen(game->player.plane));
+		win_height = HEIGHT;
+		game->wall_height = (int)((WIDTH / 2 * vectorlen(game->player.plane)) / ray[i].perpendicular_wall_distance);
+		draw_line(game, -game->wall_height / 2 + win_height / 2, game->wall_height / 2 + win_height / 2, i);
+		i++;
+	}
+}
+
 int	draw_window(t_game *game)
 {
 	t_ray	*ray;
-	int		i;
-	int		draw_start;
-	int		draw_end;
-	int		height;
 
 	ray = malloc(sizeof(t_ray) * WIDTH);
 	if (ray == NULL)
 		ft_error("Malloc failed");
 	print_ceiling_and_floor(game);
-	i = 0;
-	while (i < WIDTH)
-	{
-		calculate_ray(game, &ray[i]);
-		// height = (int)(WIDTH / 2 * vectorlen(game->player.plane));
-		height = HEIGHT;
-		game->wall_height = (int)((WIDTH / 2 * vectorlen(game->player.plane)) / ray[i].perpendicular_wall_distance);
-		draw_start = -game->wall_height / 2 + height / 2;
-		if (draw_start < 0)
-			draw_start = 0;
-		draw_end = game->wall_height / 2 + height / 2;
-		if (draw_end >= height)
-			draw_end = height - 1;
-		draw_wall(game, draw_start, draw_end, i);
-		i++;
-	}
+	draw_wall(game, ray);
 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->img->img, 0, 0);
 	ft_free(ray);
 	return (EXIT_SUCCESS);
