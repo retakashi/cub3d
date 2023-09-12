@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 20:08:31 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 20:40:08 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void	degital_differential_analyzer(t_game *game, t_ray *ray)
 			ray->map.y += ray->step.y;
 			ray->side = 1;
 		}
-		if (game->map->map[(int)ray->map.y][(int)ray->map.x] == '1')
+		if (game->map->map[(int)ray->map.x][(int)ray->map.y] == '1')
 			ray->hit = true;
 	}
 }

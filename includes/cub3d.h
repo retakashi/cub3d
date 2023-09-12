@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 19:56:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 20:50:36 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define WIDTH 1280
 # define HEIGHT 960
 
-# define ROTATE_SPEED 0.2
+# define ROTATE_SPEED 0.1
 # define MOVE_SPEED 0.2
 
 # define DEBUG 1

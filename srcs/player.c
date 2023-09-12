@@ -6,13 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:06:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 20:07:21 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 20:41:58 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-// static bool	check_nowall(t_game *game, int direction);
+static bool	check_nowall(t_game *game, int direction);
 static void	init_field_of_view(t_player *player, char c);
 
 void	init_player(t_game *game)
@@ -22,20 +22,20 @@ void	init_player(t_game *game)
 	char	**map;
 
 	map = game->map->map;
-	i = 0;
-	while (map[i] != NULL)
+	j = 0;
+	while (map[j] != NULL)
 	{
-		j = 0;
-		while (map[i][j] != '\0')
+		i = 0;
+		while (map[j][i] != '\0')
 		{
-			if (ft_strchr("NEWS", map[i][j]) != NULL)
+			if (ft_strchr("NEWS", map[j][i]) != NULL)
 			{
 				set_vector(&game->player.pos, i, j);
-				init_field_of_view(&game->player, map[i][j]);
+				init_field_of_view(&game->player, map[j][i]);
 			}
-			j++;
+			i++;
 		}
-		i++;
+		j++;
 	}
 }
 
@@ -72,39 +72,39 @@ void	set_field_of_view(t_player *player, double fov)
 
 void	set_position(t_game *game, int direction)
 {
-	if (direction == FRONT)
+	if (direction == FRONT && check_nowall(game, FRONT))
 		set_vector(&game->player.pos, game->player.pos.x - game->player.dir.x * MOVE_SPEED, game->player.pos.y - game->player.dir.y * MOVE_SPEED);
-	else if (direction == BACK)
+	if (direction == BACK && check_nowall(game, BACK))
 		set_vector(&game->player.pos, game->player.pos.x + game->player.dir.x * MOVE_SPEED, game->player.pos.y - game->player.dir.y * MOVE_SPEED);
-	else if (direction == LEFT)
+	if (direction == LEFT  && check_nowall(game, LEFT))
 		set_vector(&game->player.pos, game->player.pos.x - game->player.dir.y * MOVE_SPEED, game->player.pos.y + game->player.dir.x * MOVE_SPEED);
-	else if (direction == RIGHT)
-		set_vector(&game->player.pos, game->player.pos.x + game->player.dir.y * MOVE_SPEED, game->player.pos.y - game->player.dir.x * MOVE_SPEED);
+	if (direction == RIGHT && check_nowall(game, RIGHT))
+		set_vector(&game->player.pos, game->player.pos.x + game->player.dir.y * MOVE_SPEED, game->player.pos.y + game->player.dir.x * MOVE_SPEED);
 	printf("[pos]\nx: %f, y: %f\n", game->player.pos.x, game->player.pos.y);
 }
 
-// static bool	check_nowall(t_game *game, int direction)
-// {
-// 	int	x;
-// 	int	y;
+static bool	check_nowall(t_game *game, int direction)
+{
+	double	x;
+	double	y;
 
-// 	if (direction == FRONT || direction == BACK)
-// 	{
-// 		y = (int)game->player.pos.y;
-// 		if (direction == FRONT)
-// 			x = (int)game->player.pos.x - 1;
-// 		else
-// 			x = (int)game->player.pos.x + 1;
-// 	}
-// 	if (direction == LEFT || direction == RIGHT)
-// 	{
-// 		x = (int)game->player.pos.x;
-// 		if (direction == LEFT)
-// 			y = (int)game->player.pos.y - 1;
-// 		else
-// 			y = (int)game->player.pos.y + 1;
-// 	}
-// 	if (game->map->map[x][y] == '1')
-// 		return (false);
-// 	return (true);
-// }
+	if (direction == FRONT || direction == BACK)
+	{
+		y = game->player.pos.y - game->player.dir.y * MOVE_SPEED;
+		if (direction == FRONT)
+			x = game->player.pos.x - game->player.dir.x * MOVE_SPEED;
+		if (direction == BACK)
+			x = game->player.pos.x + game->player.dir.x * MOVE_SPEED;
+	}
+	if (direction == LEFT || direction == RIGHT)
+	{
+		x = game->player.pos.x + game->player.dir.y * MOVE_SPEED;
+		if (direction == LEFT)
+			y = game->player.pos.y - game->player.dir.x * MOVE_SPEED;
+		if (direction == RIGHT)
+			y = game->player.pos.y + game->player.dir.x * MOVE_SPEED;
+	}
+	if (game->map->map[(int)y][(int)x] == '1')
+		return (false);
+	return (true);
+}
