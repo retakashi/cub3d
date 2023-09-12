@@ -6,19 +6,19 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:06:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 20:04:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 15:26:24 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 static bool	check_nowall(t_game *game, int direction);
-static void	init_vectors(t_player *player, char c);
+static void	init_field_of_view(t_player *player, char c);
 
 void	init_player(t_game *game)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	**map;
 
 	map = game->map->map;
@@ -28,10 +28,10 @@ void	init_player(t_game *game)
 		j = 0;
 		while (map[i][j] != '\0')
 		{
-			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
+			if (ft_strchr("NEWS", map[i][j]) != NULL)
 			{
 				set_vector(&game->player.pos, i, j);
-				init_vectors(&game->player, map[i][j]);
+				init_field_of_view(&game->player, map[i][j]);
 			}
 			j++;
 		}
@@ -39,7 +39,7 @@ void	init_player(t_game *game)
 	}
 }
 
-static void	init_vectors(t_player *player, char c)
+static void	init_field_of_view(t_player *player, char c)
 {
 	if (c == 'N')
 	{
@@ -63,6 +63,12 @@ static void	init_vectors(t_player *player, char c)
 	}
 }
 
+void	set_field_of_view(t_player *player, double fov)
+{
+	set_vector(&player->dir, rotate_vec_x(player->dir, fov), rotate_vec_y(player->dir, fov));
+	set_vector(&player->plane, rotate_vec_x(player->plane, fov), rotate_vec_y(player->plane, fov));
+}
+
 void	set_position(t_game *game, int direction)
 {
 	if (direction == UP && check_nowall(game, direction))
@@ -73,6 +79,7 @@ void	set_position(t_game *game, int direction)
 		game->player.pos.x--;
 	else if (direction == RIGHT && check_nowall(game, direction))
 		game->player.pos.x++;
+	printf("[pos]\nx: %f, y: %f\n", game->player.pos.x, game->player.pos.y);
 }
 
 static bool	check_nowall(t_game *game, int direction)

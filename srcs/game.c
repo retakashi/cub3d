@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/09 18:10:08 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 15:25:46 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ void	start_game(t_map *map, t_header *header)
 
 static int	deal_key(int keycode, t_game *game)
 {
+	t_player	plr;
+
+	plr = game->player;
 	if (keycode == KEY_ESC)
 		end_game(game);
 	if (keycode == KEY_W)
@@ -51,15 +54,9 @@ static int	deal_key(int keycode, t_game *game)
 	if (keycode == KEY_D)
 		set_position(game, RIGHT);
 	if (keycode == KEY_LEFT)
-	{
-		set_vector(&game->player.dir, game->player.dir.x * cos(-ROTATE_SPEED) - game->player.dir.y * sin(-ROTATE_SPEED), game->player.dir.x * sin(-ROTATE_SPEED) + game->player.dir.y * cos(-ROTATE_SPEED));
-		set_vector(&game->player.plane, game->player.plane.x * cos(-ROTATE_SPEED) - game->player.plane.y * sin(-ROTATE_SPEED), game->player.plane.x * sin(-ROTATE_SPEED) + game->player.plane.y * cos(-ROTATE_SPEED));
-	}
+		set_field_of_view(&game->player, -ROTATE_SPEED); // minus逆では？
 	if (keycode == KEY_RIGHT)
-	{
-		set_vector(&game->player.dir, game->player.dir.x * cos(ROTATE_SPEED) - game->player.dir.y * sin(ROTATE_SPEED), game->player.dir.x * sin(ROTATE_SPEED) + game->player.dir.y * cos(ROTATE_SPEED));
-		set_vector(&game->player.plane, game->player.plane.x * cos(ROTATE_SPEED) - game->player.plane.y * sin(ROTATE_SPEED), game->player.plane.x * sin(ROTATE_SPEED) + game->player.plane.y * cos(ROTATE_SPEED));
-	}
+		set_field_of_view(&game->player, ROTATE_SPEED);
 	return (EXIT_SUCCESS);
 }
 

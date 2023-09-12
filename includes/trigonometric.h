@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_utils.c                                     :+:      :+:    :+:   */
+/*   trigonometric.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/09 18:47:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 14:57:31 by minabe           ###   ########.fr       */
+/*   Created: 2023/09/12 15:13:08 by minabe            #+#    #+#             */
+/*   Updated: 2023/09/12 15:20:41 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#ifndef TRIGONOMETRIC_H
+# define TRIGONOMETRIC_H
 
-void	set_vector(t_vector *vector, double x, double y)
-{
-	vector->x = x;
-	vector->y = y;
-}
+# include <math.h>
 
-int	vectorlen(t_vector vector)
+typedef struct s_vector
 {
-	return (sqrt(vector.x * vector.x + vector.y * vector.y));
-}
+	double	x;
+	double	y;
+}	t_vector;
+
+double	calculate_radian(int degree);
+double	rotate_vec_x(t_vector vec, double radian);
+double	rotate_vec_y(t_vector vec, double radian);
+
+#endif
