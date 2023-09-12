@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 14:13:52 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 14:14:45 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ void	draw_wall(t_game *game, t_ray *ray)
 {
 	int		i;
 	int		win_height;
-	int		draw_start;
-	int		draw_end;
 
 	i = 0;
 	while (i < WIDTH)
