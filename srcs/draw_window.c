@@ -6,13 +6,30 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 17:04:37 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 17:09:40 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void		my_mlx_pixel_put(t_image *img, int x, int y, int color)
+static void		print_ceiling_and_floor(t_game *game);
+static void		draw_wall(t_game *game, t_ray *ray);
+
+int	draw_window(t_game *game)
+{
+	t_ray	*ray;
+
+	ray = malloc(sizeof(t_ray) * WIDTH);
+	if (ray == NULL)
+		ft_error("Malloc failed");
+	print_ceiling_and_floor(game);
+	draw_wall(game, ray);
+	mlx_put_image_to_window(game->ptr, game->win_ptr, game->img->img, 0, 0);
+	ft_free(ray);
+	return (EXIT_SUCCESS);
+}
+
+static void		my_mlx_pixel_put(t_image *img, int x, int y, int color)
 {
 	char	*dst;
 
@@ -20,13 +37,7 @@ void		my_mlx_pixel_put(t_image *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-uint32_t	get_color_from_img(t_image img, int x, int y)
-{
-	return *(uint32_t*)(img.addr +
-		(y * img.line_length + x * (img.bits_per_pixel / 8)));
-}
-
-void	print_ceiling_and_floor(t_game *game)
+static void	print_ceiling_and_floor(t_game *game)
 {
 	int		i;
 	int		j;
@@ -47,7 +58,7 @@ void	print_ceiling_and_floor(t_game *game)
 	}
 }
 
-void	draw_line(t_game *game, int start, int end, int x)
+static void	draw_line(t_game *game, int start, int end, int x)
 {
 	int	j;
 
@@ -63,7 +74,7 @@ void	draw_line(t_game *game, int start, int end, int x)
 	}
 }
 
-void	draw_wall(t_game *game, t_ray *ray)
+static void	draw_wall(t_game *game, t_ray *ray)
 {
 	int		i;
 	int		win_height;
@@ -81,18 +92,4 @@ void	draw_wall(t_game *game, t_ray *ray)
 		draw_line(game, -game->wall_height / 2 + win_height / 2, game->wall_height / 2 + win_height / 2, i);
 		i++;
 	}
-}
-
-int	draw_window(t_game *game)
-{
-	t_ray	*ray;
-
-	ray = malloc(sizeof(t_ray) * WIDTH);
-	if (ray == NULL)
-		ft_error("Malloc failed");
-	print_ceiling_and_floor(game);
-	draw_wall(game, ray);
-	mlx_put_image_to_window(game->ptr, game->win_ptr, game->img->img, 0, 0);
-	ft_free(ray);
-	return (EXIT_SUCCESS);
 }
