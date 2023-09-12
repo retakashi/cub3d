@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 16:02:06 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 16:46:03 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,11 @@ void	draw_wall(t_game *game, t_ray *ray)
 	i = 0;
 	while (i < WIDTH)
 	{
+		ray[i].x = i;
 		calculate_ray(game, &ray[i]);
 		if (i == WIDTH / 2)
-			printf("dir_len: %f\n", ray->perpendicular_wall_distance);
+			printf("step: %d, %d\n", ray[i].map.x, ray[i].map.y);
+			// printf("dir_len: %f\n", ray->perpendicular_wall_distance);
 		// win_height = (int)(WIDTH / 2 * vectorlen(game->player.plane));
 		win_height = HEIGHT;
 		game->wall_height = (int)((WIDTH / 2 * vectorlen(game->player.plane)) / ray[i].perpendicular_wall_distance);

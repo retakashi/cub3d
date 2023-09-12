@@ -6,26 +6,45 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 15:34:59 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 17:00:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+static void	init_ray(t_game *game, t_ray *ray);
+static void	init_step_and_side_distance(t_game *game, t_ray *ray);
+static void	degital_differential_analyzer(t_game *game, t_ray *ray);
+static void	calculate_perpendicular_wall_distance(t_ray *ray);
+
+void	calculate_ray(t_game *game, t_ray *ray)
+{
+	init_ray(game, ray);
+	// printf("[init_ray]\n%f %f\n", ray->dir.x, ray->dir.y);
+	init_step_and_side_distance(game, ray);
+	// printf("[init_step_and_side_distance]\n%f %f\n", ray->side_distance.x, ray->side_distance.y);
+	degital_differential_analyzer(game, ray);
+	// printf("[DDA]\n%d %d\n", ray->map.x, ray->map.y);
+	calculate_perpendicular_wall_distance(ray);
+}
+
 static void	init_ray(t_game *game, t_ray *ray)
 {
+	double	camera_x;
+
+	camera_x = 2 * ray->x / (double)WIDTH - 1;
 	ray->map.x = (int)game->player.pos.y;
 	ray->map.y = (int)game->player.pos.x;
+	ray->dir.x = game->player.dir.x + game->player.plane.x * camera_x;
+	ray->dir.y = game->player.dir.y + game->player.plane.y * camera_x;
 	if (game->player.dir.x == 0)
-	{
 		ray->delta_distance.x = DBL_MAX;
-		ray->delta_distance.y = abs(1 / (int)game->player.dir.y);
-	}
-	else if (game->player.dir.y == 0)
-	{
-		ray->delta_distance.x = abs(1 / (int)game->player.dir.x);
+	else
+		ray->delta_distance.x = fabs(1 / ray->dir.x);
+	if (game->player.dir.y == 0)
 		ray->delta_distance.y = DBL_MAX;
-	}
+	else
+		ray->delta_distance.y = fabs(1 / ray->dir.y);
 	ray->hit = false;
 	ray->perpendicular_wall_distance = 0;
 }
@@ -81,15 +100,4 @@ static void	calculate_perpendicular_wall_distance(t_ray *ray)
 		ray->perpendicular_wall_distance = ray->side_distance.x - ray->delta_distance.x;
 	else
 		ray->perpendicular_wall_distance = ray->side_distance.y - ray->delta_distance.y;
-}
-
-void	calculate_ray(t_game *game, t_ray *ray)
-{
-	init_ray(game, ray);
-	// printf("[init_ray]\ncod_x: %d cod_y: %d\ndelta_x: %f delta_y: %f\n", ray->map.x, ray->map.y, ray->delta_distance.x, ray->delta_distance.y);
-	init_step_and_side_distance(game, ray);
-	// printf("[init_step_and_side_distance]\n%f %f\n", ray->side_distance.x, ray->side_distance.y);
-	degital_differential_analyzer(game, ray);
-	// printf("[DDA]\n%d %d\n", ray->map.x, ray->map.y);
-	calculate_perpendicular_wall_distance(ray);
 }

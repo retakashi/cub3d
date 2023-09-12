@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 15:58:42 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 16:23:51 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,9 @@ typedef struct s_game
 
 typedef struct s_ray
 {
+	int			x;
 	t_vector	pos;
+	t_vector	dir;
 	t_vector	side_distance;
 	t_vector	delta_distance;
 	t_vector2	step;
