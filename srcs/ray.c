@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 17:04:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 20:08:31 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static void	init_ray(t_game *game, t_ray *ray)
 	double	camera_x;
 
 	camera_x = 2 * ray->x / (double)WIDTH - 1;
-	ray->map.x = (int)game->player.pos.y;
-	ray->map.y = (int)game->player.pos.x;
+	ray->map.x = game->player.pos.y;
+	ray->map.y = game->player.pos.x;
 	ray->dir.x = game->player.dir.x + game->player.plane.x * camera_x;
 	ray->dir.y = game->player.dir.y + game->player.plane.y * camera_x;
 	if (game->player.dir.x == 0)
@@ -86,7 +86,7 @@ static void	degital_differential_analyzer(t_game *game, t_ray *ray)
 			ray->map.y += ray->step.y;
 			ray->side = 1;
 		}
-		if (game->map->map[ray->map.y][ray->map.x] == '1')
+		if (game->map->map[(int)ray->map.y][(int)ray->map.x] == '1')
 			ray->hit = true;
 	}
 }

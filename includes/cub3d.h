@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 17:04:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 19:56:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@
 # define WIDTH 1280
 # define HEIGHT 960
 
-# define ROTATE_SPEED 0.05
+# define ROTATE_SPEED 0.2
+# define MOVE_SPEED 0.2
 
 # define DEBUG 1
 # define HEADER_LEN 6
@@ -46,10 +47,10 @@
 
 enum e_direction
 {
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT
+	FRONT = 1,
+	BACK = 2,
+	LEFT = 10,
+	RIGHT = 20,
 };
 
 enum
@@ -80,12 +81,6 @@ typedef struct s_header
 	char	*ceiling_color;
 	char	*floor_color;
 }	t_header;
-
-typedef struct s_vector2
-{
-	int		x;
-	int		y;
-}	t_vector2;
 
 typedef struct s_wall
 {
@@ -131,8 +126,8 @@ typedef struct s_ray
 	t_vector	dir;
 	t_vector	side_distance;
 	t_vector	delta_distance;
-	t_vector2	step;
-	t_vector2	map;
+	t_vector	step;
+	t_vector	map;
 	int			side;
 	bool		hit;
 	double		perpendicular_wall_distance;
@@ -158,7 +153,7 @@ void		calculate_ray(t_game *game, t_ray *ray);
 
 int			draw_window(t_game *game);
 
-void		init_game(t_game *game, t_map *map, t_header *header);
 double		vectorlen(t_vector vector);
+void		init_header(t_game *game, t_header *header);;
 
 #endif

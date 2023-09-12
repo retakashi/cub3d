@@ -6,13 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:06:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 16:04:37 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 20:07:21 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static bool	check_nowall(t_game *game, int direction);
+// static bool	check_nowall(t_game *game, int direction);
 static void	init_field_of_view(t_player *player, char c);
 
 void	init_player(t_game *game)
@@ -72,39 +72,39 @@ void	set_field_of_view(t_player *player, double fov)
 
 void	set_position(t_game *game, int direction)
 {
-	if (direction == UP && check_nowall(game, direction))
-		game->player.pos.x--;
-	else if (direction == DOWN && check_nowall(game, direction))
-		game->player.pos.x++;
-	else if (direction == LEFT && check_nowall(game, direction))
-		game->player.pos.y--;
-	else if (direction == RIGHT && check_nowall(game, direction))
-		game->player.pos.y++;
+	if (direction == FRONT)
+		set_vector(&game->player.pos, game->player.pos.x - game->player.dir.x * MOVE_SPEED, game->player.pos.y - game->player.dir.y * MOVE_SPEED);
+	else if (direction == BACK)
+		set_vector(&game->player.pos, game->player.pos.x + game->player.dir.x * MOVE_SPEED, game->player.pos.y - game->player.dir.y * MOVE_SPEED);
+	else if (direction == LEFT)
+		set_vector(&game->player.pos, game->player.pos.x - game->player.dir.y * MOVE_SPEED, game->player.pos.y + game->player.dir.x * MOVE_SPEED);
+	else if (direction == RIGHT)
+		set_vector(&game->player.pos, game->player.pos.x + game->player.dir.y * MOVE_SPEED, game->player.pos.y - game->player.dir.x * MOVE_SPEED);
 	printf("[pos]\nx: %f, y: %f\n", game->player.pos.x, game->player.pos.y);
 }
 
-static bool	check_nowall(t_game *game, int direction)
-{
-	int	x;
-	int	y;
+// static bool	check_nowall(t_game *game, int direction)
+// {
+// 	int	x;
+// 	int	y;
 
-	if (direction == UP || direction == DOWN)
-	{
-		y = (int)game->player.pos.y;
-		if (direction == UP)
-			x = (int)game->player.pos.x - 1;
-		else
-			x = (int)game->player.pos.x + 1;
-	}
-	if (direction == LEFT || direction == RIGHT)
-	{
-		x = (int)game->player.pos.x;
-		if (direction == LEFT)
-			y = (int)game->player.pos.y - 1;
-		else
-			y = (int)game->player.pos.y + 1;
-	}
-	if (game->map->map[x][y] == '1')
-		return (false);
-	return (true);
-}
+// 	if (direction == FRONT || direction == BACK)
+// 	{
+// 		y = (int)game->player.pos.y;
+// 		if (direction == FRONT)
+// 			x = (int)game->player.pos.x - 1;
+// 		else
+// 			x = (int)game->player.pos.x + 1;
+// 	}
+// 	if (direction == LEFT || direction == RIGHT)
+// 	{
+// 		x = (int)game->player.pos.x;
+// 		if (direction == LEFT)
+// 			y = (int)game->player.pos.y - 1;
+// 		else
+// 			y = (int)game->player.pos.y + 1;
+// 	}
+// 	if (game->map->map[x][y] == '1')
+// 		return (false);
+// 	return (true);
+// }

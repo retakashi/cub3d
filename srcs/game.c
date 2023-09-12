@@ -6,21 +6,15 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 15:48:33 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 19:36:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+static void	init_game(t_game *game, t_map *map, t_header *header);
 static int	deal_key(int keycode, t_game *game);
-
-static void	loop_game(t_game *game)
-{
-	mlx_loop_hook(game->ptr, draw_window, game);
-	mlx_hook(game->win_ptr, ON_KEYDOWN, DEFAULT, deal_key, game);
-	mlx_hook(game->win_ptr, ON_DESTROY, DEFAULT, end_game, game);
-	mlx_loop(game->ptr);
-}
+static void	loop_game(t_game *game);
 
 void	start_game(t_map *map, t_header *header)
 {
@@ -38,26 +32,41 @@ void	start_game(t_map *map, t_header *header)
 	return ;
 }
 
+static void	init_game(t_game *game, t_map *map, t_header *header)
+{
+	game->ptr = mlx_init();
+	if (game->ptr == NULL)
+		ft_error("Mlx init failed.");
+	game->map = map;
+	init_player(game);
+	init_header(game, header);
+}
+
 static int	deal_key(int keycode, t_game *game)
 {
-	t_player	plr;
-
-	plr = game->player;
 	if (keycode == KEY_ESC)
 		end_game(game);
 	if (keycode == KEY_W)
-		set_position(game, UP);
+		set_position(game, FRONT);
 	if (keycode == KEY_S)
-		set_position(game, DOWN);
+		set_position(game, BACK);
 	if (keycode == KEY_A)
 		set_position(game, LEFT);
 	if (keycode == KEY_D)
 		set_position(game, RIGHT);
 	if (keycode == KEY_LEFT)
-		set_field_of_view(&game->player, ROTATE_SPEED); // minus逆では？
+		set_field_of_view(&game->player, ROTATE_SPEED);
 	if (keycode == KEY_RIGHT)
 		set_field_of_view(&game->player, -ROTATE_SPEED);
 	return (EXIT_SUCCESS);
+}
+
+static void	loop_game(t_game *game)
+{
+	mlx_loop_hook(game->ptr, draw_window, game);
+	mlx_hook(game->win_ptr, ON_KEYDOWN, DEFAULT, deal_key, game);
+	mlx_hook(game->win_ptr, ON_DESTROY, DEFAULT, end_game, game);
+	mlx_loop(game->ptr);
 }
 
 int	end_game(t_game *game)
