@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 16:23:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 17:04:51 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,5 @@ int			draw_window(t_game *game);
 
 void		init_game(t_game *game, t_map *map, t_header *header);
 double		vectorlen(t_vector vector);
-// void	init_ray(t_game *game, t_ray *ray);
 
 #endif

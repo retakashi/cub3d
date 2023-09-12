@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 17:00:42 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/12 17:04:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,8 @@ static void	calculate_perpendicular_wall_distance(t_ray *ray);
 void	calculate_ray(t_game *game, t_ray *ray)
 {
 	init_ray(game, ray);
-	// printf("[init_ray]\n%f %f\n", ray->dir.x, ray->dir.y);
 	init_step_and_side_distance(game, ray);
-	// printf("[init_step_and_side_distance]\n%f %f\n", ray->side_distance.x, ray->side_distance.y);
 	degital_differential_analyzer(game, ray);
-	// printf("[DDA]\n%d %d\n", ray->map.x, ray->map.y);
 	calculate_perpendicular_wall_distance(ray);
 }
 
