@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 20:50:36 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 14:33:34 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@
 # define HEADER_LEN 6
 
 # define DEFAULT 0
+
+# define FISH_EYE_EFFECT 0
 
 enum e_direction
 {

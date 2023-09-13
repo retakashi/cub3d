@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 19:53:41 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 14:37:14 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,6 @@ static void	draw_line(t_game *game, int start, int end, int x)
 {
 	int	j;
 
-	if (start < 0)
-		start = 0;
-	if (end >= HEIGHT)
-		end = HEIGHT - 1;
 	j = start;
 	while (j < end)
 	{
@@ -78,16 +74,24 @@ static void	draw_wall(t_game *game, t_ray *ray)
 {
 	int		i;
 	int		win_height;
+	int		draw_start;
+	int		draw_end;
 
 	i = 0;
 	while (i < WIDTH)
 	{
 		ray[i].x = i;
 		calculate_ray(game, &ray[i]);
-		// win_height = (int)(WIDTH / 2 * vectorlen(game->player.plane));
+		// win_height = (int)(HEIGHT / 2 * vectorlen(game->player.plane));
 		win_height = HEIGHT;
-		game->wall_height = (int)((WIDTH / 2 * vectorlen(game->player.plane)) / ray[i].perpendicular_wall_distance);
-		draw_line(game, -game->wall_height / 2 + win_height / 2, game->wall_height / 2 + win_height / 2, i);
+		game->wall_height = (int)(win_height / ray[i].perpendicular_wall_distance);
+		draw_start = -game->wall_height / 2 + win_height / 2;
+		draw_end = game->wall_height / 2 + win_height / 2;
+		if (draw_start < 0)
+			draw_start = 0;
+		if (draw_end >= HEIGHT)
+			draw_end = HEIGHT - 1;
+		draw_line(game, draw_start, draw_end, i);
 		i++;
 	}
 }
