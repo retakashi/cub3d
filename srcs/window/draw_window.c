@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 16:16:16 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 18:42:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ static void	draw_wall(t_game *game, t_ray *ray)
 	{
 		ray[i].x = i;
 		calculate_ray(game, &ray[i]);
-		// win_height = (int)(HEIGHT / 2 * vectorlen(game->player.plane));
 		win_height = WIN_HEIGHT;
 		game->wall_height = (int)(win_height / ray[i].perpendicular_wall_distance);
 		draw_start = -game->wall_height / 2 + win_height / 2;

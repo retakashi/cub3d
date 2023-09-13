@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 16:41:01 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 17:53:13 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ typedef struct s_ray
 	int			side;
 	bool		hit;
 	double		perpendicular_wall_distance;
+	void		*tex;
 }	t_ray;
 
 bool		is_cub_file(char *filename);
@@ -161,7 +162,6 @@ void		calculate_ray(t_game *game, t_ray *ray);
 int			draw_window(t_game *game);
 
 double		vectorlen(t_vector vector);
-void		init_header(t_game *game, t_header *header);
 
 void		add_textures(t_game *game, t_header *header);
 void		remove_textures(t_game *game);

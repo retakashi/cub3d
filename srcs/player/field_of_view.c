@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 16:16:16 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 18:33:37 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 static void	init_ray(t_game *game, t_ray *ray);
 static void	init_step_and_side_distance(t_game *game, t_ray *ray);
 static void	degital_differential_analyzer(t_game *game, t_ray *ray);
-static void	calculate_perpendicular_wall_distance(t_ray *ray);
+static void	calculate_perpendicular_wall_distance(t_game *game, t_ray *ray);
 
 void	calculate_ray(t_game *game, t_ray *ray)
 {
 	init_ray(game, ray);
 	init_step_and_side_distance(game, ray);
 	degital_differential_analyzer(game, ray);
-	calculate_perpendicular_wall_distance(ray);
+	calculate_perpendicular_wall_distance(game, ray);
 }
 
 static void	init_ray(t_game *game, t_ray *ray)
@@ -44,6 +44,7 @@ static void	init_ray(t_game *game, t_ray *ray)
 		ray->delta_distance.y = fabs(1 / ray->dir.y);
 	ray->hit = false;
 	ray->perpendicular_wall_distance = 0;
+	ray->tex = NULL;
 }
 
 static void	init_step_and_side_distance(t_game *game, t_ray *ray)
@@ -91,7 +92,7 @@ static void	degital_differential_analyzer(t_game *game, t_ray *ray)
 	}
 }
 
-static void	calculate_perpendicular_wall_distance(t_ray *ray)
+static void	calculate_perpendicular_wall_distance(t_game *game, t_ray *ray)
 {
 	if (FISH_EYE_EFFECT)
 	{
@@ -99,10 +100,20 @@ static void	calculate_perpendicular_wall_distance(t_ray *ray)
 			ray->perpendicular_wall_distance = (ray->map.x - ray->pos.x + (1 - ray->step.x) / 2) / ray->dir.x;
 		else
 			ray->perpendicular_wall_distance = (ray->map.y - ray->pos.y + (1 - ray->step.y) / 2) / ray->dir.y;
-		return ;
 	}
-	if (ray->side == 0)
-		ray->perpendicular_wall_distance = ray->side_distance.x - ray->delta_distance.x;
 	else
-		ray->perpendicular_wall_distance = ray->side_distance.y - ray->delta_distance.y;
+	{
+		if (ray->side == 0)
+			ray->perpendicular_wall_distance = ray->side_distance.x - ray->delta_distance.x;
+		else
+			ray->perpendicular_wall_distance = ray->side_distance.y - ray->delta_distance.y;
+	}
+	if (ray->step.x < 0)
+		ray->tex = game->wall.west_tex;
+	else
+		ray->tex = game->wall.east_tex;
+	if (ray->step.y < 0)
+		ray->tex = game->wall.north_tex;
+	else
+		ray->tex = game->wall.south_tex;
 }
