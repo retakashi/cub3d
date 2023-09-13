@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:06:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 20:41:58 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 15:03:55 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ void	set_field_of_view(t_player *player, double fov)
 void	set_position(t_game *game, int direction)
 {
 	if (direction == FRONT && check_nowall(game, FRONT))
-		set_vector(&game->player.pos, game->player.pos.x - game->player.dir.x * MOVE_SPEED, game->player.pos.y - game->player.dir.y * MOVE_SPEED);
-	if (direction == BACK && check_nowall(game, BACK))
 		set_vector(&game->player.pos, game->player.pos.x + game->player.dir.x * MOVE_SPEED, game->player.pos.y - game->player.dir.y * MOVE_SPEED);
-	if (direction == LEFT  && check_nowall(game, LEFT))
-		set_vector(&game->player.pos, game->player.pos.x - game->player.dir.y * MOVE_SPEED, game->player.pos.y + game->player.dir.x * MOVE_SPEED);
-	if (direction == RIGHT && check_nowall(game, RIGHT))
+	else if (direction == BACK && check_nowall(game, BACK))
+		set_vector(&game->player.pos, game->player.pos.x - game->player.dir.x * MOVE_SPEED, game->player.pos.y + game->player.dir.y * MOVE_SPEED);
+	else if (direction == LEFT  && check_nowall(game, LEFT))
+		set_vector(&game->player.pos, game->player.pos.x - game->player.dir.y * MOVE_SPEED, game->player.pos.y - game->player.dir.x * MOVE_SPEED);
+	else if (direction == RIGHT && check_nowall(game, RIGHT))
 		set_vector(&game->player.pos, game->player.pos.x + game->player.dir.y * MOVE_SPEED, game->player.pos.y + game->player.dir.x * MOVE_SPEED);
 	printf("[pos]\nx: %f, y: %f\n", game->player.pos.x, game->player.pos.y);
 }
