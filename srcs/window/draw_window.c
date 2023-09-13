@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 14:37:14 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 16:16:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 static void		print_ceiling_and_floor(t_game *game);
 static void		draw_wall(t_game *game, t_ray *ray);
@@ -19,7 +19,7 @@ int	draw_window(t_game *game)
 {
 	t_ray	*ray;
 
-	ray = malloc(sizeof(t_ray) * WIDTH);
+	ray = malloc(sizeof(t_ray) * WIN_WIDTH);
 	if (ray == NULL)
 		ft_error("Malloc failed");
 	print_ceiling_and_floor(game);
@@ -43,12 +43,12 @@ static void	print_ceiling_and_floor(t_game *game)
 	int		j;
 
 	i = 0;
-	while (i < HEIGHT)
+	while (i < WIN_HEIGHT)
 	{
 		j = 0;
-		while (j < WIDTH)
+		while (j < WIN_WIDTH)
 		{
-			if (i < HEIGHT / 2)
+			if (i < WIN_HEIGHT / 2)
 				my_mlx_pixel_put(game->img, j, i, game->ceiling_color);
 			else
 				my_mlx_pixel_put(game->img, j, i, game->floor_color);
@@ -78,19 +78,19 @@ static void	draw_wall(t_game *game, t_ray *ray)
 	int		draw_end;
 
 	i = 0;
-	while (i < WIDTH)
+	while (i < WIN_WIDTH)
 	{
 		ray[i].x = i;
 		calculate_ray(game, &ray[i]);
 		// win_height = (int)(HEIGHT / 2 * vectorlen(game->player.plane));
-		win_height = HEIGHT;
+		win_height = WIN_HEIGHT;
 		game->wall_height = (int)(win_height / ray[i].perpendicular_wall_distance);
 		draw_start = -game->wall_height / 2 + win_height / 2;
 		draw_end = game->wall_height / 2 + win_height / 2;
 		if (draw_start < 0)
 			draw_start = 0;
-		if (draw_end >= HEIGHT)
-			draw_end = HEIGHT - 1;
+		if (draw_end >= WIN_HEIGHT)
+			draw_end = WIN_HEIGHT - 1;
 		draw_line(game, draw_start, draw_end, i);
 		i++;
 	}

@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:24:58 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 19:41:09 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 16:16:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 int	create_rgb(char *rgb)
 {

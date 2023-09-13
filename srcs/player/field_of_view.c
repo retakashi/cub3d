@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.c                                              :+:      :+:    :+:   */
+/*   field_of_view.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 15:34:57 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 16:16:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 static void	init_ray(t_game *game, t_ray *ray);
 static void	init_step_and_side_distance(t_game *game, t_ray *ray);
@@ -29,7 +29,7 @@ static void	init_ray(t_game *game, t_ray *ray)
 {
 	double	camera_x;
 
-	camera_x = 2 * ray->x / (double)WIDTH - 1;
+	camera_x = 2 * ray->x / (double)WIN_WIDTH - 1;
 	ray->map.x = game->player.pos.x;
 	ray->map.y = game->player.pos.y;
 	ray->dir.x = game->player.dir.x + game->player.plane.x * camera_x;

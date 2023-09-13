@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:47:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 15:58:19 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 16:16:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 void	set_vector(t_vector *vector, double x, double y)
 {

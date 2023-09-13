@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/05 15:00:59 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 16:16:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 static bool	check_factors(t_map *map);
 static bool	check_wall(t_map *map);

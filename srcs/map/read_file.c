@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 16:06:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/12 17:05:08 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 16:27:46 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 static void	get_map(char **file, t_map *map);
 static char	*read_and_join(char *map, int fd, char *buf);
@@ -49,13 +49,13 @@ static void	get_header(char **file, t_header *header)
 	while (i < 6)
 	{
 		if (!ft_strncmp(file[i], "EA ", 3))
-			header->east_texture_path = ft_strdup(file[i] + 3);
+			header->east_tex_path = ft_strdup(file[i] + 3);
 		else if (!ft_strncmp(file[i], "WE ", 3))
-			header->west_texture_path = ft_strdup(file[i] + 3);
+			header->west_tex_path = ft_strdup(file[i] + 3);
 		else if (!ft_strncmp(file[i], "NO ", 3))
-			header->north_texture_path = ft_strdup(file[i] + 3);
+			header->north_tex_path = ft_strdup(file[i] + 3);
 		else if (!ft_strncmp(file[i], "SO ", 3))
-			header->south_texture_path = ft_strdup(file[i] + 3);
+			header->south_tex_path = ft_strdup(file[i] + 3);
 		else if (!ft_strncmp(file[i], "C ", 2))
 			header->ceiling_color = ft_strdup(file[i] + 2);
 		else if (!ft_strncmp(file[i], "F ", 2))
