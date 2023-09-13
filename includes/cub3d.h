@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 17:53:13 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 20:27:38 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,24 @@ typedef struct s_header
 	char	*floor_color;
 }	t_header;
 
+typedef struct s_image{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		height;
+	int		width;
+}	t_image;
+
 typedef struct s_wall
 {
 	int		height;
 	int		width;
-	void	*east_tex;
-	void	*west_tex;
-	void	*north_tex;
-	void	*south_tex;
+	void	*east;
+	void	*west;
+	void	*north;
+	void	*south;
 }	t_wall;
 
 // 視野角90で固定
@@ -104,27 +114,6 @@ typedef struct s_player
 	t_vector	dir;
 	t_vector	plane;
 }	t_player;
-
-typedef struct s_image{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_image;
-
-typedef struct s_game
-{
-	void		*ptr;
-	void		*win_ptr;
-	t_wall		wall;
-	int			ceiling_color;
-	int			floor_color;
-	t_player	player;
-	t_map		*map;
-	t_image		*img;
-	int			wall_height;
-}	t_game;
 
 typedef struct s_ray
 {
@@ -140,6 +129,20 @@ typedef struct s_ray
 	double		perpendicular_wall_distance;
 	void		*tex;
 }	t_ray;
+
+typedef struct s_game
+{
+	void		*ptr;
+	void		*win_ptr;
+	t_wall		wall;
+	int			ceiling_color;
+	int			floor_color;
+	t_player	player;
+	t_map		*map;
+	t_image		*img;
+	int			wall_height;
+	t_ray		ray;
+}	t_game;
 
 bool		is_cub_file(char *filename);
 size_t		count_map_width(char *map);
@@ -165,5 +168,8 @@ double		vectorlen(t_vector vector);
 
 void		add_textures(t_game *game, t_header *header);
 void		remove_textures(t_game *game);
+
+int			create_rgb(char *rgb);
+u_int32_t	get_color_from_img(t_image *img, int x, int y);
 
 #endif
