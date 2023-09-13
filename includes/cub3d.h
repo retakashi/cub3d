@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 15:17:15 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 16:41:01 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@
 # define WALL_HEIGHT 50
 
 # define SIZE 64
-# define WIDTH 1280
-# define HEIGHT 960
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 960
 
 # define ROTATE_SPEED M_PI / 180
 # define MOVE_SPEED 0.2
@@ -46,6 +46,9 @@
 # define DEFAULT 0
 
 # define FISH_EYE_EFFECT 0
+
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
 
 enum e_direction
 {
@@ -76,20 +79,22 @@ typedef struct s_map
 
 typedef struct s_header
 {
-	char	*east_texture_path;
-	char	*west_texture_path;
-	char	*north_texture_path;
-	char	*south_texture_path;
+	char	*east_tex_path;
+	char	*west_tex_path;
+	char	*north_tex_path;
+	char	*south_tex_path;
 	char	*ceiling_color;
 	char	*floor_color;
 }	t_header;
 
 typedef struct s_wall
 {
-	void	*east_texture;
-	void	*west_texture;
-	void	*north_texture;
-	void	*south_texture;
+	int		height;
+	int		width;
+	void	*east_tex;
+	void	*west_tex;
+	void	*north_tex;
+	void	*south_tex;
 }	t_wall;
 
 // 視野角90で固定
@@ -112,7 +117,7 @@ typedef struct s_game
 {
 	void		*ptr;
 	void		*win_ptr;
-	t_wall		*wall;
+	t_wall		wall;
 	int			ceiling_color;
 	int			floor_color;
 	t_player	player;
@@ -156,6 +161,9 @@ void		calculate_ray(t_game *game, t_ray *ray);
 int			draw_window(t_game *game);
 
 double		vectorlen(t_vector vector);
-void		init_header(t_game *game, t_header *header);;
+void		init_header(t_game *game, t_header *header);
+
+void		add_textures(t_game *game, t_header *header);
+void		remove_textures(t_game *game);
 
 #endif
