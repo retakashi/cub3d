@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 18:42:44 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 20:29:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,16 @@ static void	print_ceiling_and_floor(t_game *game)
 
 static void	draw_line(t_game *game, int start, int end, int x)
 {
-	int	j;
+	int			i;
+	// u_int32_t	color;
 
-	j = start;
-	while (j < end)
+	i = start;
+	while (i < end)
 	{
-		my_mlx_pixel_put(game->img, x, j, 0x00FF0000);
-		j++;
+		// color = get_color_from_img(game->ray.tex, x, i);
+		// my_mlx_pixel_put(game->img, x, i, color);
+		my_mlx_pixel_put(game->img, x, i, 0x00FF0000);
+		i++;
 	}
 }
 
@@ -90,6 +93,7 @@ static void	draw_wall(t_game *game, t_ray *ray)
 			draw_start = 0;
 		if (draw_end >= WIN_HEIGHT)
 			draw_end = WIN_HEIGHT - 1;
+		game->ray = ray[i];
 		draw_line(game, draw_start, draw_end, i);
 		i++;
 	}

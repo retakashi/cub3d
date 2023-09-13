@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 16:16:16 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 20:00:36 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,28 +57,6 @@ static bool	check_factors(t_map *map)
 		return (false);
 	return (true);
 }
-
-// static bool	check_wall(t_map *map)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (map->map[i] != '\0')
-// 	{
-// 		if (i < map->width || i > ft_strlen(map->map) - map->width)
-// 		{
-// 			if (map->map[i] != '1' && map->map[i] != '\n')
-// 				return (false);
-// 		}
-// 		if (i % map->width == 0 || i % map->width == map->width - 2)
-// 		{
-// 			if (map->map[i] != '1')
-// 				return (false);
-// 		}
-// 		i++;
-// 	}
-// 	return (true);
-// }
 
 bool	is_cub_file(char *filename)
 {

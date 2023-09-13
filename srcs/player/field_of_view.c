@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 18:33:37 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 19:53:28 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,11 @@ static void	calculate_perpendicular_wall_distance(t_game *game, t_ray *ray)
 			ray->perpendicular_wall_distance = ray->side_distance.y - ray->delta_distance.y;
 	}
 	if (ray->step.x < 0)
-		ray->tex = game->wall.west_tex;
+		ray->tex = game->wall.west;
 	else
-		ray->tex = game->wall.east_tex;
+		ray->tex = game->wall.east;
 	if (ray->step.y < 0)
-		ray->tex = game->wall.north_tex;
+		ray->tex = game->wall.north;
 	else
-		ray->tex = game->wall.south_tex;
+		ray->tex = game->wall.south;
 }
