@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:06:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 15:03:55 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/13 15:09:48 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,21 +88,25 @@ static bool	check_nowall(t_game *game, int direction)
 	double	x;
 	double	y;
 
-	if (direction == FRONT || direction == BACK)
+	if (direction == FRONT)
 	{
+		x = game->player.pos.x + game->player.dir.x * MOVE_SPEED;
 		y = game->player.pos.y - game->player.dir.y * MOVE_SPEED;
-		if (direction == FRONT)
-			x = game->player.pos.x - game->player.dir.x * MOVE_SPEED;
-		if (direction == BACK)
-			x = game->player.pos.x + game->player.dir.x * MOVE_SPEED;
 	}
-	if (direction == LEFT || direction == RIGHT)
+	if (direction == BACK)
+	{
+		x = game->player.pos.x - game->player.dir.x * MOVE_SPEED;
+		y = game->player.pos.y + game->player.dir.y * MOVE_SPEED;
+	}
+	if (direction == LEFT)
+	{
+		x = game->player.pos.x - game->player.dir.y * MOVE_SPEED;
+		y = game->player.pos.y - game->player.dir.x * MOVE_SPEED;
+	}
+	if (direction == RIGHT)
 	{
 		x = game->player.pos.x + game->player.dir.y * MOVE_SPEED;
-		if (direction == LEFT)
-			y = game->player.pos.y - game->player.dir.x * MOVE_SPEED;
-		if (direction == RIGHT)
-			y = game->player.pos.y + game->player.dir.x * MOVE_SPEED;
+		y = game->player.pos.y + game->player.dir.x * MOVE_SPEED;
 	}
 	if (game->map->map[(int)y][(int)x] == '1')
 		return (false);
