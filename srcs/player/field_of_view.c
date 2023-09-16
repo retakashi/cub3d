@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/16 15:04:22 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/16 16:05:31 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static void	init_ray(t_game *game, t_ray *ray)
 	double	camera_x;
 
 	camera_x = 2 * ray->x / (double)WIN_WIDTH - 1;
-	ray->map.x = game->player.pos.x;
-	ray->map.y = game->player.pos.y;
+	ray->map.x = floor(game->player.pos.x);
+	ray->map.y = floor(game->player.pos.y);
 	ray->dir.x = game->player.dir.x + game->player.plane.x * camera_x;
 	ray->dir.y = game->player.dir.y + game->player.plane.y * camera_x;
 	if (ray->dir.x == 0)
@@ -62,14 +62,14 @@ static void	init_step_and_side_distance(t_game *game, t_ray *ray)
 	if (ray->dir.y < 0)
 	{
 		ray->step.y = 1;
-		ray->side_distance.y = (game->player.pos.y - ray->map.y) * ray->delta_distance.y;
+		ray->side_distance.y = (ray->map.y - game->player.pos.y) * ray->delta_distance.y;
 	}
 	else
 	{
 		ray->step.y = -1;
-		ray->side_distance.y = (ray->map.y + 1.0 - game->player.pos.y) * ray->delta_distance.y;
+		ray->side_distance.y = (game->player.pos.y + 1.0 - ray->map.y) * ray->delta_distance.y;
 	}
-}
+	}
 
 static void	degital_differential_analyzer(t_game *game, t_ray *ray)
 {
