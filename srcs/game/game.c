@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 17:40:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/16 14:28:19 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ static void	loop_game(t_game *game)
 int	end_game(t_game *game)
 {
 	mlx_destroy_window(game->ptr, game->win_ptr);
-	remove_textures(game);
+	// remove_textures(game);
 	exit(EXIT_SUCCESS);
 }
