@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 17:09:28 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 17:34:06 by minabe           ###   ########.fr       */
+/*   Created: 2022/05/19 17:18:24 by minabe            #+#    #+#             */
+/*   Updated: 2023/09/16 19:29:32 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <limits.h>
-# include <unistd.h>
-# include "../../includes/libft.h"
+#include "../includes/libft.h"
 
-int	ft_printf(const char *format, ...);
-int	putnbr_hex(unsigned long long nbr, char conv);
-int	put_str(char *s);
-int	put_ptr(unsigned long long ptr);
+ssize_t	ft_putendl_fd(int fd, char *s)
+{
+	ssize_t	size;
 
-#endif
+	size = ft_putstr_fd(fd, s);
+	size += ft_putchar_fd(fd, '\n');
+	return (size);
+}

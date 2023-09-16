@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:14:49 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/03 14:04:09 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/16 19:28:29 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <unistd.h>
 # include <limits.h>
 # include <fcntl.h>
-# include "../libft/ft_printf/ft_printf.h"
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
@@ -45,8 +44,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *buf, int ch, size_t n);
 
-ssize_t	ft_putchar(char c);
-ssize_t	ft_putendl(char *s);
+ssize_t	ft_putchar_fd(int fd, char c);
+ssize_t	ft_putendl_fd(int fd, char *s);
 ssize_t	ft_putnbr(long long n);
 ssize_t	ft_putstr_fd(int fd, char *s);
 

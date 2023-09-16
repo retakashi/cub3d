@@ -6,14 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 20:00:36 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/16 19:50:55 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static bool	check_factors(t_map *map);
-static bool	check_wall(t_map *map);
 
 bool	check_map(t_map *map)
 {
@@ -23,12 +22,6 @@ bool	check_map(t_map *map)
 		printf("Invalid map.");
 		return (false);
 	}
-	return (true);
-}
-
-static bool	check_wall(t_map *map)
-{
-	(void)map;
 	return (true);
 }
 

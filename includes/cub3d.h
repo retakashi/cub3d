@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/16 16:08:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/16 19:21:19 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,8 +147,10 @@ typedef struct s_game
 bool		is_cub_file(char *filename);
 size_t		count_map_width(char *map);
 int			count_map_height(char **file);
+bool		check_wall(t_map *map);
 bool		check_map(t_map *map);
 void		get_file(char *file, t_map *map, t_header *header);
+void		free_2d(char **strs);
 
 void		start_game(t_map *map, t_header *header);
 int			end_game(t_game *game);

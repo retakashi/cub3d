@@ -21,22 +21,22 @@ ssize_t	ft_putnbr(long long n)
 	{
 		n /= 10;
 		res += ft_putnbr(n);
-		res += ft_putchar('8');
+		res += ft_putchar_fd(1, '8');
 		return (res);
 	}
 	if (n < 0)
 	{
-		res += ft_putchar('-');
+		res += ft_putchar_fd(1, '-');
 		n *= -1;
 		res += ft_putnbr(n);
 		return (res);
 	}
 	if (n < 10)
 	{
-		res += ft_putchar(n + '0');
+		res += ft_putchar_fd(1, n + '0');
 		return (res);
 	}
 	res += ft_putnbr(n / 10);
-	res += ft_putchar(n % 10 + '0');
+	res += ft_putchar_fd(1, n % 10 + '0');
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 16:06:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 16:27:46 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/16 19:21:12 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	get_map(char **file, t_map *map);
 static char	*read_and_join(char *map, int fd, char *buf);
 static void	get_header(char **file, t_header *header);
-static void	free_2d(char **strs);
 
 void	get_file(char *file, t_map *map, t_header *header)
 {
@@ -108,7 +107,7 @@ static void	get_map(char **file, t_map *map)
 	return ;
 }
 
-static void	free_2d(char **strs)
+void	free_2d(char **strs)
 {
 	int	i;
 
