@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 19:53:28 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/16 14:24:14 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	init_ray(t_game *game, t_ray *ray)
 
 static void	init_step_and_side_distance(t_game *game, t_ray *ray)
 {
-	if (game->player.dir.x < 0)
+	if (ray->dir.x < 0)
 	{
 		ray->step.x = -1;
 		ray->side_distance.x = (game->player.pos.x - ray->map.x) * ray->delta_distance.x;
@@ -59,7 +59,7 @@ static void	init_step_and_side_distance(t_game *game, t_ray *ray)
 		ray->step.x = 1;
 		ray->side_distance.x = (ray->map.x + 1.0 - game->player.pos.x) * ray->delta_distance.x;
 	}
-	if (game->player.dir.y < 0)
+	if (ray->dir.y < 0)
 	{
 		ray->step.y = 1;
 		ray->side_distance.y = (game->player.pos.y - ray->map.y) * ray->delta_distance.y;
