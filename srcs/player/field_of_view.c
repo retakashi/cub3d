@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/16 14:24:14 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/16 15:04:22 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static void	init_ray(t_game *game, t_ray *ray)
 	ray->map.y = game->player.pos.y;
 	ray->dir.x = game->player.dir.x + game->player.plane.x * camera_x;
 	ray->dir.y = game->player.dir.y + game->player.plane.y * camera_x;
-	if (game->player.dir.x == 0)
+	if (ray->dir.x == 0)
 		ray->delta_distance.x = DBL_MAX;
 	else
 		ray->delta_distance.x = fabs(1 / ray->dir.x);
-	if (game->player.dir.y == 0)
+	if (ray->dir.y == 0)
 		ray->delta_distance.y = DBL_MAX;
 	else
 		ray->delta_distance.y = fabs(1 / ray->dir.y);
