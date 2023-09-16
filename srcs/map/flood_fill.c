@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 19:14:03 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/16 21:03:38 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/16 21:32:53 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	flood_fill(char **map, int i, int j)
 {
 	if (ft_strchr("1x", map[i][j]))
 		return ;
-	if (map[i][j + 1] == '\0' || map[i + 1] == NULL || i == 0 || j == 0 || map[i][j] == ' ' || map[i + 1][j] == '1')
+	if (map[i][j + 1] == '\0' || map[i + 1] == NULL || i == 0 || j == 0 || map[i][j] == ' ')
 		ft_error("Invalid map.");
 	map[i][j] = 'x';
 	if (0 < i)

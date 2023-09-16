@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/16 19:21:19 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/16 21:31:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ typedef struct s_header
 	char	*floor_color;
 }	t_header;
 
-typedef struct s_image{
+typedef struct s_image
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -101,10 +102,10 @@ typedef struct s_wall
 {
 	int		height;
 	int		width;
-	void	*east;
-	void	*west;
-	void	*north;
-	void	*south;
+	t_image	*east;
+	t_image	*west;
+	t_image	*north;
+	t_image	*south;
 }	t_wall;
 
 // 視野角90で固定
