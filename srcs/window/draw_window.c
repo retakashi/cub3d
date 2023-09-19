@@ -6,7 +6,7 @@
 /*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/19 14:12:30 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:24:34 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,6 @@ int	draw_window(t_game *game)
 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->img->img, 0, 0);
 	ft_free(ray);
 	return (EXIT_SUCCESS);
-}
-
-static void		my_mlx_pixel_put(t_image *img, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
 }
 
 static void	print_ceiling_and_floor(t_game *game)
@@ -58,18 +50,29 @@ static void	print_ceiling_and_floor(t_game *game)
 	}
 }
 
+static void	get_wall_x(t_game *game, t_ray *ray)
+{
+	if (ray->side == X_AXIS)
+		ray->wall_x = game->player.pos.y + ray->perpendicular_wall_distance * ray->dir.y;
+	else
+		ray->wall_x = game->player.pos.x + ray->perpendicular_wall_distance * ray->dir.x;
+	ray->wall_x -= floor(ray->wall_x);
+}
+
 static void	draw_line(t_game *game, int start, int end, int x)
 {
 	int			i;
 	u_int32_t	color;
+	int			height;
+	double		ratio;
 
+	height = end - start;
 	i = start;
 	while (i < end)
 	{
-		printf("x: %d, i: %d\n", x, i);
-		color = get_color_from_img(game->ray.tex, x, i);
+		ratio = (double)(i - start) / height;
+		color = get_color_from_img(game->ray.tex, game->ray.wall_x * TEX_WIDTH, (int)(ratio * TEX_HEIGHT));
 		my_mlx_pixel_put(game->img, x, i, color);
-		// my_mlx_pixel_put(game->img, x, i, 0x00FF0000);
 		i++;
 	}
 }
@@ -86,6 +89,7 @@ static void	draw_wall(t_game *game, t_ray *ray)
 	{
 		ray[i].x = i;
 		calculate_ray(game, &ray[i]);
+		get_wall_x(game, &ray[i]);
 		win_height = WIN_HEIGHT;
 		game->wall_height = (int)(win_height / ray[i].perpendicular_wall_distance);
 		draw_start = -game->wall_height / 2 + win_height / 2;

@@ -6,7 +6,7 @@
 /*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/19 14:23:05 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/19 18:32:29 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,26 +94,21 @@ static void	degital_differential_analyzer(t_game *game, t_ray *ray)
 
 static void	calculate_perpendicular_wall_distance(t_game *game, t_ray *ray)
 {
-	if (FISH_EYE_EFFECT)
+	if (ray->side == X_AXIS)
 	{
-		if (ray->side == X_AXIS)
-			ray->perpendicular_wall_distance = (ray->map.x - ray->pos.x + (1 - ray->step.x) / 2) / ray->dir.x;
+		ray->perpendicular_wall_distance = ray->side_distance.x - ray->delta_distance.x;
+		if (ray->step.x < 0)
+			ray->tex = game->wall.west;
 		else
-			ray->perpendicular_wall_distance = (ray->map.y - ray->pos.y + (1 - ray->step.y) / 2) / ray->dir.y;
+			ray->tex = game->wall.east;
+		
 	}
 	else
 	{
-		if (ray->side == X_AXIS)
-			ray->perpendicular_wall_distance = ray->side_distance.x - ray->delta_distance.x;
+		ray->perpendicular_wall_distance = ray->side_distance.y - ray->delta_distance.y;
+		if (ray->step.y < 0)
+			ray->tex = game->wall.north;
 		else
-			ray->perpendicular_wall_distance = ray->side_distance.y - ray->delta_distance.y;
+			ray->tex = game->wall.south;
 	}
-	if (ray->step.x < 0)
-		ray->tex = game->wall.west;
-	else
-		ray->tex = game->wall.east;
-	if (ray->step.y < 0)
-		ray->tex = game->wall.north;
-	else
-		ray->tex = game->wall.south;
 }
