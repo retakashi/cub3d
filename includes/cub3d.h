@@ -6,7 +6,7 @@
 /*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/19 14:22:26 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:45:43 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ typedef struct s_player
 typedef struct s_ray
 {
 	int			x;
+	double		wall_x;
 	t_vector	pos;
 	t_vector	dir;
 	t_vector	side_distance;
@@ -177,5 +178,7 @@ void		remove_textures(t_game *game);
 
 int			create_rgb(char *rgb);
 u_int32_t	get_color_from_img(t_image *img, int x, int y);
+
+void		my_mlx_pixel_put(t_image *img, int x, int y, int color);
 
 #endif
