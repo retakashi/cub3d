@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:15:23 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/16 21:47:49 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/16 22:00:08 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	add_textures(t_game *game, t_header *header)
 	width = TEX_WIDTH;
 	game->ceiling_color = create_rgb(header->ceiling_color);
 	game->floor_color = create_rgb(header->floor_color);
-	printf("north_tex_path\n%s\n", header->north_tex_path);
 	game->wall.north = mlx_xpm_file_to_image(game->ptr, header->north_tex_path, &width, &height);
 	game->wall.south = mlx_xpm_file_to_image(game->ptr, header->south_tex_path, &width, &height);
 	game->wall.west = mlx_xpm_file_to_image(game->ptr, header->west_tex_path, &width, &height);
