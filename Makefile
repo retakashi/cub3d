@@ -18,12 +18,12 @@ DEPS	=	$(OBJS:.o=.d)
 LIBFTDIR = ./libft
 LIBFT = $(LIBFTDIR)/libft.a
 
-LDFLAGS = -lmlx -L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit
+LDFLAGS = -L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT) ./minilibx-linux/libmlx_Darwin.a
+		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) ./minilibx-linux/libmlx_Darwin.a $(LDFLAGS) -o $(NAME)
 
 $(OBJSDIR)/%.o: $(SRCSDIR)/%.c
 	@mkdir -p $(dir $@)

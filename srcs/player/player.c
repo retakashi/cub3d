@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:06:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/16 14:49:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/20 23:21:17 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	set_field_of_view(t_player *player, double fov)
 {
 	set_vector(&player->dir, rotate_vec_x(player->dir, fov), rotate_vec_y(player->dir, fov));
 	set_vector(&player->plane, rotate_vec_x(player->plane, fov), rotate_vec_y(player->plane, fov));
-	printf("[direction]\nx: %f, y: %f\n", player->dir.x, player->dir.y);
+	// printf("[direction]\nx: %f, y: %f\n", player->dir.x, player->dir.y);
 }
 
 void	set_position(t_game *game, int direction)
@@ -80,7 +80,7 @@ void	set_position(t_game *game, int direction)
 		set_vector(&game->player.pos, game->player.pos.x - game->player.dir.y * MOVE_SPEED, game->player.pos.y - game->player.dir.x * MOVE_SPEED);
 	else if (direction == RIGHT && check_nowall(game, RIGHT))
 		set_vector(&game->player.pos, game->player.pos.x + game->player.dir.y * MOVE_SPEED, game->player.pos.y + game->player.dir.x * MOVE_SPEED);
-	printf("[pos]\nx: %f, y: %f\n", game->player.pos.x, game->player.pos.y);
+	// printf("[pos]\nx: %f, y: %f\n", game->player.pos.x, game->player.pos.y);
 }
 
 static bool	check_nowall(t_game *game, int direction)

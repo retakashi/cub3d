@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/19 17:45:43 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/19 22:51:45 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,32 @@
 # include <unistd.h>
 # include <errno.h>
 # include <math.h>
-# include <mlx.h>
+# include "../minilibx-linux/mlx.h" //m1 ver
+// # include <mlx.h>
 # include "trigonometric.h"
 # include "libft.h"
 
-# define KEY_ESC 53
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
+// # define KEY_ESC 53
+// # define KEY_W 13
+// # define KEY_A 0
+// # define KEY_S 1
+// # define KEY_D 2
+// # define KEY_LEFT 123
+// # define KEY_RIGHT 124
+
+# define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 
 # define WALL_HEIGHT 50
 
 # define SIZE 64
-# define WIN_WIDTH 1280
-# define WIN_HEIGHT 960
+# define WIN_WIDTH 1000
+# define WIN_HEIGHT 800
 
 # define ROTATE_SPEED M_PI / 180
 # define MOVE_SPEED 0.05

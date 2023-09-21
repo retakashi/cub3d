@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:15:23 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/19 17:43:28 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/19 23:02:14 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ void	add_textures(t_game *game, t_header *header)
 
 void	remove_textures(t_game *game)
 {
-	mlx_destroy_image(game->ptr, game->wall.north);
-	mlx_destroy_image(game->ptr, game->wall.south);
-	mlx_destroy_image(game->ptr, game->wall.west);
-	mlx_destroy_image(game->ptr, game->wall.east);
+	if(game!=NULL)
+	return;
+	// mlx_destroy_image(game->ptr, game->wall.north);
+	// mlx_destroy_image(game->ptr, game->wall.south);
+	// mlx_destroy_image(game->ptr, game->wall.west);
+	// mlx_destroy_image(game->ptr, game->wall.east);
 }
