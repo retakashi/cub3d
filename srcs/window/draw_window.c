@@ -6,7 +6,7 @@
 /*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/21 22:37:41 by reira            ###   ########.fr       */
+/*   Updated: 2023/09/21 23:45:36 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,19 +71,15 @@ static void	draw_line(t_game *game, int start, int end, int x)
 	// height = end - start;
 	i = start;
 	step_y = (double)TEX_HEIGHT / (double)game->wall_height;
-	// printf("height %d\n",game->wall_height);
-	tex_y = (start - (WIN_HEIGHT / 2) + game->wall_height / 2) * step_y; 
+	tex_y = (start - WIN_HEIGHT / 2 + game->wall_height / 2) * step_y;
 	while (i < end)
 	{
 		// ratio = (double)(i - start) / height;
 		// ratio = WIN_HEIGHT / TEX_HEIGHT;
-		if (i >= start && i <= end)
-		{
 		color = get_color_from_img(game->ray.tex, game->ray.wall_x * TEX_WIDTH, tex_y);
 		// printf("x :%d y :%d\n",(int)(game->ray.wall_x * TEX_WIDTH),(int)tex_y);
 		tex_y += step_y;
 		my_mlx_pixel_put(game->img, x, i, color);
-		}
 		i++;
 	}
 }
