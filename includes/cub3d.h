@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/19 17:45:43 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/23 15:22:04 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 960
 
-# define ROTATE_SPEED M_PI / 180
-# define MOVE_SPEED 0.05
+# define ROTATE_SPEED M_PI / 90
+# define MOVE_SPEED 0.15
 
 # define DEBUG 1
 # define HEADER_LEN 6
