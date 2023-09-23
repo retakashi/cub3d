@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   my_mlx_pixel_put.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 13:35:20 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/23 18:31:39 by minabe           ###   ########.fr       */
+/*   Created: 2023/09/09 18:47:14 by minabe            #+#    #+#             */
+/*   Updated: 2023/09/19 17:41:55 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "cub3d.h"
 
-void	ft_error(char *str)
+void	my_mlx_pixel_put(t_image *img, int x, int y, int color)
 {
-	ft_putendl_fd(STDERR_FILENO, "Error");
-	ft_putendl_fd(STDERR_FILENO, str);
-	exit(EXIT_FAILURE);
-	return ;
+	char	*dst;
+
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }

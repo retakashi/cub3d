@@ -1,21 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   hook_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 13:35:20 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/23 18:31:39 by minabe           ###   ########.fr       */
+/*   Created: 2023/09/23 18:54:49 by minabe            #+#    #+#             */
+/*   Updated: 2023/09/23 19:23:57 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "cub3d.h"
 
-void	ft_error(char *str)
-{
-	ft_putendl_fd(STDERR_FILENO, "Error");
-	ft_putendl_fd(STDERR_FILENO, str);
-	exit(EXIT_FAILURE);
-	return ;
-}

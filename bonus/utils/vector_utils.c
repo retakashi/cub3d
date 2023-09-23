@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   vector_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 13:35:20 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/23 18:31:39 by minabe           ###   ########.fr       */
+/*   Created: 2023/09/09 18:47:14 by minabe            #+#    #+#             */
+/*   Updated: 2023/09/13 16:16:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "cub3d.h"
 
-void	ft_error(char *str)
+void	set_vector(t_vector *vector, double x, double y)
 {
-	ft_putendl_fd(STDERR_FILENO, "Error");
-	ft_putendl_fd(STDERR_FILENO, str);
-	exit(EXIT_FAILURE);
-	return ;
+	vector->x = x;
+	vector->y = y;
+}
+
+double	vectorlen(t_vector vector)
+{
+	return (sqrt(vector.x * vector.x + vector.y * vector.y));
 }
