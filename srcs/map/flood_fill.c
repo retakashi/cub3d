@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 19:14:03 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/19 16:24:55 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/23 19:37:52 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,18 @@
 
 static void	flood_fill(char **map, int i, int j)
 {
+	if (i > 0 && map[i - 1] != NULL && ft_strrchr(map[i - 1], '0'))
+	{
+		if ((int)ft_strlen(map[i]) < ft_strrchr(map[i - 1], '0') \
+			- map[i - 1] + 1)
+			ft_error("Invalid map.");
+	}
+	if (map[i + 1] != NULL && ft_strrchr(map[i + 1], '0'))
+	{
+		if ((int)ft_strlen(map[i]) < ft_strrchr(map[i + 1], '0') \
+			- map[i + 1] + 1)
+			ft_error("Invalid map.");
+	}
 	if (i < 0 || j < 0 || ft_strchr("1xNEWS", map[i][j]))
 		return ;
 	if (map[i][j] == ' ' || map[i][j + 1] == '\0' || map[i] == NULL)
@@ -58,7 +70,11 @@ bool	check_wall(t_map *map)
 		while (cpy[i][j] != '\0')
 		{
 			if (cpy[i][j] == '0')
+			{
+				if (i == 0)
+					ft_error("Invalid map.");
 				flood_fill(cpy, i, j);
+			}
 			j++;
 		}
 		i++;
