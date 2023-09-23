@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/23 17:49:24 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/23 18:30:13 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ static void	init_step_and_side_distance(t_game *game, t_ray *ray)
 		ray->step.y = -1;
 		ray->side_distance.y = (game->player.pos.y - ray->map.y) * ray->delta_distance.y;
 	}
-	// if (ray->x == WIN_WIDTH / 2)
-	// 	printf("side_dist.y: %f\n", ray->side_distance.y);
 }
 
 static void	degital_differential_analyzer(t_game *game, t_ray *ray)

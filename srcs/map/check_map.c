@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/16 19:50:55 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/23 18:32:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ bool	check_map(t_map *map)
 {
 	if (!check_factors(map) || !check_wall(map))
 	{
-		printf("Error\n");
-		printf("Invalid map.");
+		ft_error("Invalid map.");
 		return (false);
 	}
 	return (true);
