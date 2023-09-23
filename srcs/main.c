@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/19 15:15:34 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/23 15:01:51 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ static void	cub3d(char *file)
 	}
 	if (!check_map(&map))
 		exit(EXIT_FAILURE);
-	// start_game(&map, &header);
+	start_game(&map, &header);
 	return ;
 }

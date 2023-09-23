@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   field_of_view.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/19 18:32:29 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/23 15:18:04 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,16 @@ static void	init_step_and_side_distance(t_game *game, t_ray *ray)
 	if (ray->dir.y < 0)
 	{
 		ray->step.y = 1;
-		ray->side_distance.y = (ray->map.y - game->player.pos.y) * ray->delta_distance.y;
+		ray->side_distance.y = (ray->map.y + 1.0 - game->player.pos.y) * ray->delta_distance.y;
 	}
 	else
 	{
 		ray->step.y = -1;
-		ray->side_distance.y = (game->player.pos.y + 1.0 - ray->map.y) * ray->delta_distance.y;
+		ray->side_distance.y = (game->player.pos.y - ray->map.y) * ray->delta_distance.y;
 	}
-	}
+	if (ray->x == WIN_WIDTH / 2)
+		printf("side_dist.y: %f\n", ray->side_distance.y);
+}
 
 static void	degital_differential_analyzer(t_game *game, t_ray *ray)
 {
