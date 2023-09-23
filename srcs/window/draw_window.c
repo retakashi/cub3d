@@ -6,7 +6,7 @@
 /*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/19 19:24:34 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/23 15:06:46 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,16 @@ static void	draw_line(t_game *game, int start, int end, int x)
 {
 	int			i;
 	u_int32_t	color;
-	int			height;
 	double		ratio;
+	double		tex_y;
 
-	height = end - start;
 	i = start;
+	ratio = (double)TEX_HEIGHT / (double)game->wall_height;
+	tex_y = (start - WIN_HEIGHT / 2 + game->wall_height / 2) * ratio;
 	while (i < end)
 	{
-		ratio = (double)(i - start) / height;
-		color = get_color_from_img(game->ray.tex, game->ray.wall_x * TEX_WIDTH, (int)(ratio * TEX_HEIGHT));
+		color = get_color_from_img(game->ray.tex, game->ray.wall_x * TEX_WIDTH, tex_y);
+		tex_y += ratio;
 		my_mlx_pixel_put(game->img, x, i, color);
 		i++;
 	}
