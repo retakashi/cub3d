@@ -6,7 +6,7 @@
 /*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 19:14:03 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 00:42:29 by reira            ###   ########.fr       */
+/*   Updated: 2023/09/24 00:57:39 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void is_valid_player_position(char **map, int i, int j)
 	char c;
 	
 	c = map[i][j];
-	if(map[i][j + 1] == '\0')
+	if(map[i][0] == c || map[i][j + 1] == '\0')
 		ft_error("Invalid map.");	
 	if (i > 0)
 	{
