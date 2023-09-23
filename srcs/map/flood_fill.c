@@ -6,7 +6,7 @@
 /*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 19:14:03 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 03:51:27 by reira            ###   ########.fr       */
+/*   Updated: 2023/09/24 04:00:18 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,16 @@ static char	**copy_map(t_map *map)
 
 static void	flood_fill(char **map, int i, int j,char c)
 {
-	if (i > 0 && compare_len(map[i - 1],map[i], c) > 0)
+	if(map[i] == NULL)
 		ft_error("Invalid map.");	
+	if (i > 0 && compare_len(map[i - 1],map[i], c) > 0)
+		ft_error("Invalid map.");
+	printf("i %d\n",i);
 	if(map[i + 1] != NULL && compare_len(map[i + 1],map[i], c) > 0)
 		ft_error("Invalid map.");	
 	if(ft_strchr("1xnews", map[i][j]))
 		return;
-	if (map[i][j] == ' ' || map[i][j + 1] == '\0' || map[i] == NULL)
+	if (map[i][j] == ' ' || map[i][j + 1] == '\0')
 		ft_error("Invalid map.");
 	if(i == 0 || j == 0)
 		ft_error("Invalid map.");	
