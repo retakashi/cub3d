@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/23 15:06:46 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/23 17:16:10 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	print_ceiling_and_floor(t_game *game)
 static void	get_wall_x(t_game *game, t_ray *ray)
 {
 	if (ray->side == X_AXIS)
-		ray->wall_x = game->player.pos.y + ray->perpendicular_wall_distance * ray->dir.y;
+		ray->wall_x = -game->player.pos.y + ray->perpendicular_wall_distance * ray->dir.y;
 	else
 		ray->wall_x = game->player.pos.x + ray->perpendicular_wall_distance * ray->dir.x;
 	ray->wall_x -= floor(ray->wall_x);
