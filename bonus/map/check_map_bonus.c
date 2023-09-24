@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 14:25:32 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 17:24:19 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static bool	check_factors(t_map *map)
 		j = 0;
 		while (map->map[i][j] != '\0')
 		{
-			if (map->map[i][j] == 'N' || map->map[i][j] == 'S' || map->map[i][j] == 'W' || map->map[i][j] == 'E')
+			if (ft_strchr("NEWS", map->map[i][j]))
 				player++;
-			else if (map->map[i][j] != '1' && map->map[i][j] != '0' && map->map[i][j] != '\n' && map->map[i][j] != ' ')
+			else if (!ft_strchr("01 \n", map->map[i][j]))
 				return (false);
 			j++;
 		}

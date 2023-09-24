@@ -3,29 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 19:14:03 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 16:13:20 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/24 17:25:59 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-static void	flood_fill(char **map, int i, int j)
+static char		**copy_map(t_map *map);
+static void		flood_fill(char **map, int i, int j, char c);
+static size_t	compare_len(char *str1, char *str2, char c);
+
+bool	check_wall(t_map *map)
 {
-	if (i < 0 || j < 0 || ft_strchr("1xNEWS", map[i][j]))
-		return ;
-	if (map[i][j] == ' ' || map[i][j + 1] == '\0' || map[i] == NULL)
-		ft_error("Invalid map.");
-	map[i][j] = 'x';
-	flood_fill(map, i - 1, j);
-	flood_fill(map, i, j - 1);
-	flood_fill(map, i + 1, j);
-	flood_fill(map, i, j + 1);
+	int		i;
+	int		j;
+	char	**cpy;
+
+	cpy = copy_map(map);
+	i = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (cpy[i][j] != '\0')
+		{
+			if (cpy[i][j] == '0' || ft_strchr("NEWS", cpy[i][j]))
+				flood_fill(cpy, i, j, cpy[i][j]);
+			j++;
+		}
+		i++;
+	}
+	free_2d(cpy);
+	return (true);
 }
 
-char	**copy_map(t_map *map)
+static char	**copy_map(t_map *map)
 {
 	int		i;
 	char	**cpy;
@@ -44,31 +58,33 @@ char	**copy_map(t_map *map)
 	return (cpy);
 }
 
-bool	check_wall(t_map *map)
+static void	flood_fill(char **map, int i, int j, char c)
 {
-	int		i;
-	int		j;
-	char	**cpy;
+	if (map[i] == NULL)
+		ft_error("Invalid map.");
+	if (i > 0 && compare_len(map[i - 1], map[i], c) > 0)
+		ft_error("Invalid map.");
+	if (map[i + 1] != NULL && compare_len(map[i + 1], map[i], c) > 0)
+		ft_error("Invalid map.");
+	if (ft_strchr("1xnews", map[i][j]))
+		return ;
+	if (map[i][j] == ' ' || map[i][j + 1] == '\0')
+		ft_error("Invalid map.");
+	if (i == 0 || j == 0)
+		ft_error("Invalid map.");
+	if (ft_strchr("NEWS", map[i][j]))
+		map[i][j] = ft_tolower(map[i][j]);
+	else
+	map[i][j] = 'x';
+	flood_fill(map, i - 1, j, map[i][j]);
+	flood_fill(map, i, j - 1, map[i][j]);
+	flood_fill(map, i + 1, j, map[i][j]);
+	flood_fill(map, i, j + 1, map[i][j]);
+}
 
-	cpy = copy_map(map);
-	i = 0;
-	while (i < map->height)
-	{
-		j = 0;
-		while (cpy[i][j] != '\0')
-		{
-			if (cpy[i][j] == '0')
-				flood_fill(cpy, i, j);
-			j++;
-		}
-		i++;
-	}
-	if (DEBUG)
-	{
-		printf("\n[cpy]\n");
-		for (int i = 0; cpy[i] != NULL; i++)
-			printf("%s\n", cpy[i]);
-	}
-	free_2d(cpy);
-	return (true);
+static	size_t	compare_len(char *str1, char *str2, char c)
+{
+	if (!ft_strchr(str2, c))
+		return (0);
+	return (ft_strlen(str1) < (size_t)(ft_strrchr(str2, c) - str2) + 1);
 }

@@ -6,13 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:15:23 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 17:13:07 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 17:21:55 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static	void	add_texture_address(t_game *game);
+static void	add_texture_address(t_game *game);
 
 void	add_textures(t_game *game, t_header *header)
 {
@@ -37,7 +37,7 @@ void	add_textures(t_game *game, t_header *header)
 	add_texture_address(game);
 }
 
-static	void	add_texture_address(t_game *game)
+static void	add_texture_address(t_game *game)
 {
 	game->wall.north->addr = mlx_get_data_addr(game->wall.north, \
 		&game->wall.north->bits_per_pixel, &game->wall.north->line_length, \
