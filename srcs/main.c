@@ -14,6 +14,11 @@
 
 static void	cub3d(char *file);
 
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q cub3D");
+// }
+
 int	main(int argc, char **argv)
 {
 	if (argc < 2)
