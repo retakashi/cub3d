@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 20:57:04 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 13:58:19 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:14:43 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_itoa(int n)
 	digit = check_digit(n, 0);
 	nbr = malloc(sizeof(char) * (digit + 1));
 	if (!nbr)
-		ft_error("malloc failed");
+		ft_error("malloc failed.");
 	p = nbr + digit;
 	*p = '\0';
 	if (n <= 0)

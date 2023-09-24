@@ -6,7 +6,7 @@
 /*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 16:06:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 15:58:54 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:17:22 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ void	get_file(char *file, t_map *map, t_header *header)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		ft_error("Failed to open file");
+		ft_error("Failed to open file.");
 	tmp = ft_strdup("");
 	if (tmp == NULL)
-		ft_error("Ft_strdup failed");
+		ft_error("Ft_strdup failed.");
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (buf == NULL)
-		ft_error("Malloc failed");
+		ft_error("Malloc failed.");
 	tmp = read_and_join(tmp, fd, buf);
 	if (tmp == NULL)
-		ft_error("Read_and_join failed");
+		ft_error("Read_and_join failed.");
 	close(fd);
 	splited_file = ft_split(tmp, '\n');
 	ft_free(tmp);
 	if (splited_file == NULL)
-		ft_error("Ft_split failed");
+		ft_error("Ft_split failed.");
 	get_header(splited_file, header);
 	get_map(splited_file, map);
 	free_2d(splited_file);
@@ -53,7 +53,7 @@ static void	get_header(char **file, t_header *header)
 	while (i < HEADER_LEN)
 	{
 		if (file[i] == NULL)
-			ft_error("Invalid header");
+			ft_error("Invalid header.");
 		if (!ft_strncmp(file[i], "EA ", 3))
 			header->east_tex_path = ft_strdup(file[i] + 3);
 		else if (!ft_strncmp(file[i], "WE ", 3))
@@ -67,7 +67,7 @@ static void	get_header(char **file, t_header *header)
 		else if (!ft_strncmp(file[i], "F ", 2))
 			header->floor_color = ft_strdup(file[i] + 2);
 		else
-			ft_error("Invalid header");
+			ft_error("Invalid header.");
 		i++;
 	}
 	return ;
@@ -84,7 +84,7 @@ static char	*read_and_join(char *file, int fd, char *buf)
 		ft_bzero(buf, BUFFER_SIZE + 1);
 		read_size = read(fd, buf, BUFFER_SIZE);
 		if (read_size < 0)
-			ft_error("Failed to read file\n");
+			ft_error("Failed to read file.");
 		tmp = ft_strjoin(file, buf);
 		ft_free(file);
 		file = tmp;
@@ -103,7 +103,7 @@ static void	get_map(char **file, t_map *map)
 	map->height = count_map_height(file);
 	map->map = ft_calloc(sizeof(char *), (map->height + 1));
 	if (map->map == NULL)
-		ft_error("Malloc failed");
+		ft_error("Malloc failed.");
 	i_file = HEADER_LEN;
 	i_map = 0;
 	while (file[i_file] != NULL)
@@ -112,7 +112,7 @@ static void	get_map(char **file, t_map *map)
 		if (map->map[i_map] == NULL)
 		{
 			free_2d(map->map);
-			ft_error("Ft_strdup failed");
+			ft_error("Ft_strdup failed.");
 		}	
 		i_file++;
 		i_map++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 16:06:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 14:25:37 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:14:00 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	get_file(char *file, t_map *map, t_header *header)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		ft_error("Failed to open file");
+		ft_error("Failed to open file.");
 	tmp = ft_strdup("");
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (buf == NULL)
-		ft_error("Malloc failed");
+		ft_error("Malloc failed.");
 	tmp = read_and_join(tmp, fd, buf);
 	close(fd);
 	splited_file = ft_split(tmp, '\n');
@@ -60,7 +60,7 @@ static void	get_header(char **file, t_header *header)
 		else if (!ft_strncmp(file[i], "F ", 2))
 			header->floor_color = ft_strdup(file[i] + 2);
 		else
-			ft_error("Invalid header");
+			ft_error("Invalid header.");
 		i++;
 	}
 	return ;
@@ -77,7 +77,7 @@ static char	*read_and_join(char *file, int fd, char *buf)
 		ft_bzero(buf, BUFFER_SIZE + 1);
 		read_size = read(fd, buf, BUFFER_SIZE);
 		if (read_size < 0)
-			ft_error("Failed to read file\n");
+			ft_error("Failed to read file.");
 		tmp = ft_strjoin(file, buf);
 		ft_free(file);
 		file = tmp;
@@ -94,7 +94,7 @@ static void	get_map(char **file, t_map *map)
 	map->height = count_map_height(file);
 	map->map = ft_calloc(sizeof(char *), (map->height + 1));
 	if (map->map == NULL)
-		ft_error("Malloc failed");
+		ft_error("Malloc failed.");
 	/* 初期位置が確定しているのかわからん。要検討 */
 	i_file = 6;
 	i_map = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 19:14:03 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 14:25:33 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:13:20 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ char	**copy_map(t_map *map)
 
 	cpy = ft_calloc(sizeof(char *), (map->height + 1));
 	if (cpy == NULL)
-		ft_error("Malloc failed");
+		ft_error("Malloc failed.");
 	i = 0;
 	while (i < map->height)
 	{
 		cpy[i] = ft_strdup(map->map[i]);
 		if (cpy[i] == NULL)
-			ft_error("Malloc failed");
+			ft_error("Malloc failed.");
 		i++;
 	}
 	return (cpy);

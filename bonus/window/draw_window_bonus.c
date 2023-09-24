@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_window_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 14:26:13 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:14:14 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	draw_window(t_game *game)
 
 	ray = malloc(sizeof(t_ray) * WIN_WIDTH);
 	if (ray == NULL)
-		ft_error("Malloc failed");
+		ft_error("Malloc failed.");
 	print_ceiling_and_floor(game);
 	draw_wall(game, ray);
 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->img->img, 0, 0);

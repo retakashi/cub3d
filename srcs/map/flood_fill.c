@@ -6,7 +6,7 @@
 /*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 19:14:03 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 14:33:01 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:16:42 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ static char	**copy_map(t_map *map)
 
 	cpy = ft_calloc(sizeof(char *), (map->height + 1));
 	if (cpy == NULL)
-		ft_error("Malloc failed");
+		ft_error("Malloc failed.");
 	i = 0;
 	while (i < map->height)
 	{
 		cpy[i] = ft_strdup(map->map[i]);
 		if (cpy[i] == NULL)
-			ft_error("Malloc failed");
+			ft_error("Malloc failed.");
 		i++;
 	}
 	return (cpy);

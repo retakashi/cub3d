@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 15:19:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 13:58:59 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:15:17 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strdup(const char *s1)
 	len = ft_strlen(s1);
 	cpy = malloc(sizeof(char) * (len + 1));
 	if (cpy == NULL)
-		ft_error("malloc failed");
+		ft_error("malloc failed.");
 	i = 0;
 	while (s1[i])
 	{

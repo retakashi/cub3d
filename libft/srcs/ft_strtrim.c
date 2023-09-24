@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 14:34:15 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 13:59:24 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:15:39 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	{
 		str = malloc(sizeof(char) * (end - start + 1));
 		if (!str)
-			ft_error("malloc failed");
+			ft_error("malloc failed.");
 		ft_strlcpy(str, s1 + start, end - start + 1);
 	}
 	return (str);

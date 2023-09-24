@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 14:55:13 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:13:08 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	start_game(t_map *map, t_header *header)
 	init_game(&game, map, header);
 	game.win_ptr = mlx_new_window(game.ptr, WIN_WIDTH, WIN_HEIGHT, "cub3d");
 	if (game.win_ptr == NULL)
-		ft_error("Mlx window init failed");
+		ft_error("Mlx window init failed.");
 	img.img = mlx_new_image(game.ptr, WIN_WIDTH, WIN_HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
