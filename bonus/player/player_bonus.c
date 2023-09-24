@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:06:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 17:11:29 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 17:31:07 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ void	init_player(t_game *game)
 		{
 			if (ft_strchr("NEWS", map[j][i]) != NULL)
 			{
-				printf("player pos: %d, %d\n", i, j);
-				set_vector(&game->player.pos, i, j);
+				set_vector(&game->player.pos, i + 0.5, j + 0.5);
 				init_field_of_view(&game->player, map[j][i]);
 			}
 			i++;
