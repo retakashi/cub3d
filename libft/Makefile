@@ -1,19 +1,28 @@
 NAME = libft.a
 
 CC = cc
-INCDIR = .
-CFLAGS = -Wall -Wextra -Werror $(addprefix -I,$(INCDIR))
 
-LIBDIR	=	.
+CFLAGS = -Wall -Wextra -Werror -MMD -MP
+CFLAGS += $(addprefix -I,$(INCDIR))
+INCDIR = ./include
 
-SRCS = $(shell find $(LIBDIR) -name "*.c" -type f | xargs)
+SRCSDIR = ./srcs
+SRCS = $(shell find $(SRCSDIR) -name "*.c" -type f | xargs)
 
-OBJS = $(SRCS:%.c=%.o)
+OBJSDIR = ./objs
+OBJS = $(patsubst $(SRCSDIR)/%.c,$(OBJSDIR)/%.o,$(SRCS))
+DEPS	=	$(OBJS:.o=.d)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 		ar -rcs $(NAME) $(OBJS)
+
+$(OBJSDIR)/%.o: $(SRCSDIR)/%.c
+		@mkdir -p $(dir $@)
+		$(CC) $(CFLAGS) -c -o $@ $<
+
+-include $(DEPS)
 
 clean:
 		$(RM) $(OBJS) $(B_OBJS)
