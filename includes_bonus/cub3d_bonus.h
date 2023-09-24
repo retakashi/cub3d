@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 14:30:52 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 14:52:51 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define WIN_HEIGHT 960
 
 # define ROTATE_SPEED M_PI / 60
-# define MOVE_SPEED 0.15 // 0.1の倍数で南がバグる
+# define MOVE_SPEED 0.15
 
 # define DEBUG 1
 # define HEADER_LEN 6
@@ -178,5 +178,8 @@ int			create_rgb(char *rgb);
 u_int32_t	get_color_from_img(t_image *img, int x, int y);
 
 void		my_mlx_pixel_put(t_image *img, int x, int y, int color);
+
+int			deal_key(int keycode, t_game *game);
+int			mouse_move(int x, int y, t_game *game);
 
 #endif
