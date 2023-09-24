@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trigonometric_function_bonus.c                     :+:      :+:    :+:   */
+/*   trigonometric_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 14:56:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 14:26:02 by minabe           ###   ########.fr       */
+/*   Created: 2023/09/12 15:13:08 by minabe            #+#    #+#             */
+/*   Updated: 2023/09/24 14:28:52 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#ifndef TRIGONOMETRIC_H
+# define TRIGONOMETRIC_H
 
-double	calculate_radian(int degree)
-{
-	return (degree * M_PI / 180);
-}
+# include <math.h>
 
-double	rotate_vec_x(t_vector vec, double radian)
+typedef struct s_vector
 {
-	return (vec.x * cos(radian) - vec.y * sin(radian));
-}
+	double	x;
+	double	y;
+}	t_vector;
 
-double	rotate_vec_y(t_vector vec, double radian)
-{
-	return (vec.x * sin(radian) + vec.y * cos(radian));
-}
+double	calculate_radian(int degree);
+double	rotate_vec_x(t_vector vec, double radian);
+double	rotate_vec_y(t_vector vec, double radian);
+
+#endif

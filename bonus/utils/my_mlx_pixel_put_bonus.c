@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_mlx_pixel_put.c                                 :+:      :+:    :+:   */
+/*   my_mlx_pixel_put_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:47:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/19 17:41:55 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/24 14:25:53 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color)
 {
