@@ -2,9 +2,9 @@ NAME = libft.a
 
 CC = cc
 
+INCDIR = ./include
 CFLAGS = -Wall -Wextra -Werror -MMD -MP
 CFLAGS += $(addprefix -I,$(INCDIR))
-INCDIR = ./include
 
 SRCSDIR = ./srcs
 SRCS = $(shell find $(SRCSDIR) -name "*.c" -type f | xargs)
