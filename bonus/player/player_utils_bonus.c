@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 17:01:30 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 17:11:46 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 18:06:33 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ static t_vector	calculate_new_position(t_game *game, int direction)
 static bool	check_nowall(t_game *game, t_vector pos)
 {
 	if (game->map->map[(int)pos.y][(int)pos.x] == '1')
+	{
+		if (fabs(game->player.pos.x - pos.x) < MOVE_SPEED && \
+				fabs(game->player.pos.y - pos.y) < MOVE_SPEED)
+			printf("Collision detected.\n");
 		return (false);
+	}
 	return (true);
 }
