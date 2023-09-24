@@ -25,7 +25,7 @@ $(OBJSDIR)/%.o: $(SRCSDIR)/%.c
 -include $(DEPS)
 
 clean:
-		$(RM) $(OBJS) $(B_OBJS)
+		$(RM) $(OBJS) $(DEPS)
 
 fclean: clean
 		$(RM) $(NAME)
