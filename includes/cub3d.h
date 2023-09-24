@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/23 17:31:34 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 14:13:41 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <math.h>
 # include <mlx.h>
 # include "trigonometric.h"
-# include "libft.h"
+# include "../libft/include/libft.h"
 
 # define KEY_ESC 53
 # define KEY_W 13

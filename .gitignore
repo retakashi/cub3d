@@ -5,4 +5,5 @@ a.out
 *.d
 *.a
 cub3D
+cub3D_bonus
 *.cpp
