@@ -6,15 +6,15 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:06:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 15:20:59 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:12:58 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	check_nowall(t_game *game, t_vector pos);
+static bool		check_nowall(t_game *game, t_vector pos);
 static t_vector	calculate_new_position(t_game *game, int direction);
-static void	init_field_of_view(t_player *player, char c);
+static void		init_field_of_view(t_player *player, char c);
 
 void	init_player(t_game *game)
 {
@@ -66,9 +66,15 @@ static void	init_field_of_view(t_player *player, char c)
 
 void	set_field_of_view(t_player *player, double fov)
 {
-	set_vector(&player->dir, rotate_vec_x(player->dir, fov), rotate_vec_y(player->dir, fov));
-	set_vector(&player->plane, rotate_vec_x(player->plane, fov), rotate_vec_y(player->plane, fov));
+	t_vector	plane;
+	t_vector	dir;
+
+	plane = player->plane;
+	dir = player->dir;
+	set_vector(&dir, rotate_vec_x(dir, fov), rotate_vec_y(dir, fov));
+	set_vector(&plane, rotate_vec_x(plane, fov), rotate_vec_y(plane, fov));
 }
+
 void	set_position(t_game *game, int direction)
 {
 	t_vector	new_pos;
