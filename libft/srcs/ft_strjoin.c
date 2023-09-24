@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:17:04 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 13:59:03 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:15:33 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	{
 		ft_free(s1);
 		ft_free(s2);
-		ft_error("malloc failed");
+		ft_error("malloc failed.");
 	}
 	ft_memcpy(str, s1, len1);
 	ft_memcpy(str + len1, s2, len2);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 17:19:45 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 13:59:26 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:15:46 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_substr(char const *s, size_t start, size_t len)
 	{
 		str = malloc(sizeof(char) * (slen - start + 1));
 		if (!str)
-			ft_error("malloc failed");
+			ft_error("malloc failed.");
 		ft_strlcpy(str, s + start, len + 1);
 	}
 	return (str);
