@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:10:10 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/23 17:16:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 13:57:55 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static void	draw_line(t_game *game, int start, int end, int x)
 {
 	int			i;
 	u_int32_t	color;
+<<<<<<< HEAD
 	double		ratio;
 	double		tex_y;
 
@@ -73,6 +74,18 @@ static void	draw_line(t_game *game, int start, int end, int x)
 	{
 		color = get_color_from_img(game->ray.tex, game->ray.wall_x * TEX_WIDTH, tex_y);
 		tex_y += ratio;
+=======
+	double		step_y;
+	double		tex_y;
+
+	i = start;
+	step_y = (double)TEX_HEIGHT / (double)game->wall_height;
+	tex_y = (start - WIN_HEIGHT / 2 + game->wall_height / 2) * step_y;
+	while (i < end)
+	{
+		color = get_color_from_img(game->ray.tex, game->ray.wall_x * TEX_WIDTH, tex_y);
+		tex_y += step_y;
+>>>>>>> 789c66bff7e0d703ff0ce817584bdc9dd604336e
 		my_mlx_pixel_put(game->img, x, i, color);
 		i++;
 	}
