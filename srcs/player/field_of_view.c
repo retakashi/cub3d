@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   field_of_view.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 16:00:49 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:52:45 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,25 +49,28 @@ static void	init_ray(t_game *game, t_ray *ray)
 
 static void	init_step_and_side_distance(t_game *game, t_ray *ray)
 {
+	t_vector	pos;
+
+	pos = game->player.pos;
 	if (ray->dir.x < 0)
 	{
 		ray->step.x = -1;
-		ray->side_distance.x = (game->player.pos.x - ray->map.x) * ray->delta_distance.x;
+		ray->side_distance.x = (pos.x - ray->map.x) * ray->delta_distance.x;
 	}
 	else
 	{
 		ray->step.x = 1;
-		ray->side_distance.x = (ray->map.x + 1.0 - game->player.pos.x) * ray->delta_distance.x;
+		ray->side_distance.x = (ray->map.x + 1.0 - pos.x) * ray->delta_distance.x;
 	}
 	if (ray->dir.y < 0)
 	{
 		ray->step.y = 1;
-		ray->side_distance.y = (ray->map.y + 1.0 - game->player.pos.y) * ray->delta_distance.y;
+		ray->side_distance.y = (ray->map.y + 1.0 - pos.y) * ray->delta_distance.y;
 	}
 	else
 	{
 		ray->step.y = -1;
-		ray->side_distance.y = (game->player.pos.y - ray->map.y) * ray->delta_distance.y;
+		ray->side_distance.y = (pos.y - ray->map.y) * ray->delta_distance.y;
 	}
 }
 

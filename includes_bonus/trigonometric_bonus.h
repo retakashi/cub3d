@@ -6,12 +6,12 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:13:08 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 14:28:52 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:27:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TRIGONOMETRIC_H
-# define TRIGONOMETRIC_H
+#ifndef TRIGONOMETRIC_BONUS_H
+# define TRIGONOMETRIC_BONUS_H
 
 # include <math.h>
 

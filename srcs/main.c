@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/23 15:01:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:31:51 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@ static void	cub3d(char *file)
 	t_header	header;
 
 	get_file(file, &map, &header);
-	if (DEBUG)
-	{
-		puts("[map]");
-		for (int i = 0; map.map[i] != NULL; i++)
-			printf("%s\n", map.map[i]);
-	}
 	if (!check_map(&map))
 		exit(EXIT_FAILURE);
 	start_game(&map, &header);

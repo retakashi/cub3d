@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 19:14:03 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 16:16:42 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:39:26 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static char	**copy_map(t_map *map);
-static void	flood_fill(char **map, int i, int j, char c);
+static char		**copy_map(t_map *map);
+static void		flood_fill(char **map, int i, int j, char c);
 static size_t	compare_len(char *str1, char *str2, char c);
 
 bool	check_wall(t_map *map)
@@ -34,12 +34,6 @@ bool	check_wall(t_map *map)
 			j++;
 		}
 		i++;
-	}
-	if (DEBUG)
-	{
-		printf("\n[cpy]\n");
-		for (int i = 0; cpy[i] != NULL; i++)
-			printf("%s\n", cpy[i]);
 	}
 	free_2d(cpy);
 	return (true);
@@ -70,7 +64,7 @@ static void	flood_fill(char **map, int i, int j, char c)
 		ft_error("Invalid map.");
 	if (i > 0 && compare_len(map[i - 1], map[i], c) > 0)
 		ft_error("Invalid map.");
-	if (map[i + 1] != NULL && compare_len(map[i + 1],map[i], c) > 0)
+	if (map[i + 1] != NULL && compare_len(map[i + 1], map[i], c) > 0)
 		ft_error("Invalid map.");
 	if (ft_strchr("1xnews", map[i][j]))
 		return ;
