@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 16:52:45 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 17:00:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,14 @@ static void	init_step_and_side_distance(t_game *game, t_ray *ray)
 	else
 	{
 		ray->step.x = 1;
-		ray->side_distance.x = (ray->map.x + 1.0 - pos.x) * ray->delta_distance.x;
+		ray->side_distance.x = (ray->map.x + 1.0 - pos.x) \
+			* ray->delta_distance.x;
 	}
 	if (ray->dir.y < 0)
 	{
 		ray->step.y = 1;
-		ray->side_distance.y = (ray->map.y + 1.0 - pos.y) * ray->delta_distance.y;
+		ray->side_distance.y = (ray->map.y + 1.0 - pos.y) \
+			* ray->delta_distance.y;
 	}
 	else
 	{
@@ -99,7 +101,8 @@ static void	calculate_perpendicular_wall_distance(t_game *game, t_ray *ray)
 {
 	if (ray->side == X_AXIS)
 	{
-		ray->perpendicular_wall_distance = ray->side_distance.x - ray->delta_distance.x;
+		ray->perpendicular_wall_distance = ray->side_distance.x \
+			- ray->delta_distance.x;
 		if (ray->step.x < 0)
 			ray->tex = game->wall.west;
 		else
@@ -107,7 +110,8 @@ static void	calculate_perpendicular_wall_distance(t_game *game, t_ray *ray)
 	}
 	else
 	{
-		ray->perpendicular_wall_distance = ray->side_distance.y - ray->delta_distance.y;
+		ray->perpendicular_wall_distance = ray->side_distance.y \
+			- ray->delta_distance.y;
 		if (ray->step.y < 0)
 			ray->tex = game->wall.north;
 		else
