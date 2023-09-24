@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   game_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/23 19:24:28 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 14:55:13 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 static void	init_game(t_game *game, t_map *map, t_header *header);
-static int	deal_key(int keycode, t_game *game);
 static void	loop_game(t_game *game);
 
 void	start_game(t_map *map, t_header *header)
@@ -26,7 +25,8 @@ void	start_game(t_map *map, t_header *header)
 	if (game.win_ptr == NULL)
 		ft_error("Mlx window init failed");
 	img.img = mlx_new_image(game.ptr, WIN_WIDTH, WIN_HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
+			&img.line_length, &img.endian);
 	game.img = &img;
 	loop_game(&game);
 	return ;
@@ -41,38 +41,6 @@ static void	init_game(t_game *game, t_map *map, t_header *header)
 	init_player(game);
 	add_textures(game, header);
 }
-
-static int	deal_key(int keycode, t_game *game)
-{
-	if (keycode == KEY_ESC)
-		end_game(game);
-	if (keycode == KEY_W)
-		set_position(game, FRONT);
-	if (keycode == KEY_S)
-		set_position(game, BACK);
-	if (keycode == KEY_A)
-		set_position(game, LEFT);
-	if (keycode == KEY_D)
-		set_position(game, RIGHT);
-	if (keycode == KEY_LEFT)
-		set_field_of_view(&game->player, ROTATE_SPEED);
-	if (keycode == KEY_RIGHT)
-		set_field_of_view(&game->player, -ROTATE_SPEED);
-	return (EXIT_SUCCESS);
-}
-
-static int	mouse_move(int x, int y, t_game *game)
-{
-	int			center_x;
-	t_vector	pos;
-
-	(void)y;
-	center_x = WIN_WIDTH / 2;
-	pos.x = x - center_x;
-	set_field_of_view(&game->player, ROTATE_SPEED * (-pos.x / center_x));
-	return (EXIT_SUCCESS);
-}
-
 
 static void	loop_game(t_game *game)
 {

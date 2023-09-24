@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   color_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 19:28:08 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/16 21:41:30 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 14:57:26 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	create_rgb(char *rgb)
 {
@@ -36,8 +36,10 @@ int	create_rgb(char *rgb)
 
 u_int32_t	get_color_from_img(t_image *img, int x, int y)
 {
-	char	*dst;
+	char			*dst;
+	unsigned int	color;
 
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	return (*(unsigned int*)dst);
+	color = *(unsigned int *)dst;
+	return (color);
 }

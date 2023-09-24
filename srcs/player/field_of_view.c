@@ -6,7 +6,7 @@
 /*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:59:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 13:57:40 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:00:49 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ static void	calculate_perpendicular_wall_distance(t_game *game, t_ray *ray)
 			ray->tex = game->wall.west;
 		else
 			ray->tex = game->wall.east;
-		
 	}
 	else
 	{

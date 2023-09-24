@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trigonometric_function.c                           :+:      :+:    :+:   */
+/*   trigonometric_function_bonus.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:56:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/13 16:16:16 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 14:26:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 double	calculate_radian(int degree)
 {

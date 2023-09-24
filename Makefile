@@ -9,6 +9,9 @@ CFLAGS += $(INCFLAGS)
 INCDIR	=	./includes ./libft
 INC	=	$(addprefix -I,$(INCDIR)) 
 
+B_INCDIR	=	./includes_bonus ./libft
+B_INC	=	$(addprefix -I,$(B_INCDIR))
+
 SRCSDIR = ./srcs
 SRCS	=	$(shell find $(SRCSDIR) -name "*.c" | xargs)
 
@@ -49,16 +52,17 @@ $(BONUS_NAME): $(B_OBJS) $(LIBFT)
 
 $(B_OBJDIR)/%.o: $(BONUSDIR)/%.c
 		@mkdir -p $(dir $@)
-		$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+		$(CC) $(CFLAGS) $(B_INC) -c -o $@ $<
 
 -include $(B_DEPS)
 
 clean:
 		$(MAKE) fclean -C $(LIBFTDIR)
 		$(RM) $(OBJS) $(DEPS) $(B_OBJS) $(B_DEPS)
+		@$(RM) -rf $(OBJSDIR) $(B_OBJDIR)
 
 fclean: clean
-		$(RM) $(NAME) $(LIBFT)
+		$(RM) $(NAME) $(BONUS_NAME)
 
 re: fclean all
 
