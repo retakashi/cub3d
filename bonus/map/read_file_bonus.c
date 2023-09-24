@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 16:06:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 17:24:38 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 19:25:08 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	get_map(char **file, t_map *map);
 static char	*read_and_join(char *map, int fd, char *buf);
 static void	get_header(char **file, t_header *header);
+static void	malloc_map(char **file, t_map *map);
 
 void	get_file(char *file, t_map *map, t_header *header)
 {
@@ -100,14 +101,16 @@ static void	get_map(char **file, t_map *map)
 	int		i_file;
 	int		i_map;
 
-	map->height = count_map_height(file);
-	map->map = ft_calloc(sizeof(char *), (map->height + 1));
-	if (map->map == NULL)
-		ft_error("Malloc failed.");
 	i_file = HEADER_LEN;
 	i_map = 0;
+	malloc_map(file, map);
 	while (file[i_file] != NULL)
 	{
+		if (ft_strlen(file[i_file]) > MAP_WIDTH_MAX)
+		{
+			free_2d(map->map);
+			ft_error("Map is too big.");
+		}
 		map->map[i_map] = ft_strdup(file[i_file]);
 		if (map->map[i_map] == NULL)
 		{
@@ -117,19 +120,14 @@ static void	get_map(char **file, t_map *map)
 		i_file++;
 		i_map++;
 	}
-	return ;
 }
 
-void	free_2d(char **strs)
+static void	malloc_map(char **file, t_map *map)
 {
-	int	i;
-
-	i = 0;
-	while (strs[i] != NULL)
-	{
-		ft_free(strs[i]);
-		i++;
-	}
-	ft_free(strs);
-	return ;
+	map->height = count_map_height(file);
+	if (map->height - HEADER_LEN > MAP_HEIGHT_MAX)
+		ft_error("Map is too big.");
+	map->map = ft_calloc(sizeof(char *), (map->height + 1));
+	if (map->map == NULL)
+		ft_error("Malloc failed.");
 }
