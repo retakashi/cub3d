@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -MMD -MP
 CFLAGS += $(INCFLAGS)
 
 
-INCDIR	=	./includes
+INCDIR	=	./includes ./libft
 INC	=	$(addprefix -I,$(INCDIR)) 
 
 SRCSDIR = ./srcs
@@ -55,7 +55,7 @@ $(B_OBJDIR)/%.o: $(BONUSDIR)/%.c
 
 clean:
 		$(MAKE) fclean -C $(LIBFTDIR)
-		$(RM) $(OBJS) $(DEPS)
+		$(RM) $(OBJS) $(DEPS) $(B_OBJS) $(B_DEPS)
 
 fclean: clean
 		$(RM) $(NAME) $(LIBFT)

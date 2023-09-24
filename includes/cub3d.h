@@ -6,7 +6,7 @@
 /*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 13:56:46 by rtakashi         ###   ########.fr       */
+/*   Updated: 2023/09/24 14:25:05 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "../minilibx-linux/mlx.h" //m1 ver
 // # include <mlx.h>
 # include "trigonometric.h"
-# include "libft.h"
+# include "../libft/include/libft.h"
 
 // # define KEY_ESC 53
 // # define KEY_W 13
