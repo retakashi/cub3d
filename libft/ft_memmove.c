@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 16:57:58 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 17:35:57 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 13:58:26 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:43:38 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 17:35:31 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 13:58:12 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 bool	ft_isdigit(int c)
 {

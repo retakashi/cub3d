@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:20:57 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 17:25:14 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 13:59:34 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 static char	*gnl_read(char *save, int fd);
 static char	*get_line(char *save);

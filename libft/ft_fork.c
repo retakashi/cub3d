@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khorike <khorike@student.42.fr>            +#+  +:+       +#+        */
+/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 11:40:43 by khorike           #+#    #+#             */
-/*   Updated: 2023/07/30 11:50:27 by khorike          ###   ########.fr       */
+/*   Updated: 2023/09/24 13:57:54 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 pid_t	ft_fork(void)
 {

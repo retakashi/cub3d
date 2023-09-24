@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:45:56 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 17:36:23 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 13:58:53 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {

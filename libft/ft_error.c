@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 13:35:20 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/23 18:31:39 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 13:57:51 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 void	ft_error(char *str)
 {

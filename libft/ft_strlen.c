@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 15:33:16 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/05 16:12:45 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 13:59:09 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {

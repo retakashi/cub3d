@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -MMD -MP
 CFLAGS += $(INCFLAGS)
 
 
-INCDIR	=	./includes
+INCDIR	=	./includes ./libft
 INC	=	$(addprefix -I,$(INCDIR)) 
 
 SRCSDIR = ./srcs

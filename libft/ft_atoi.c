@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 10:57:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 17:34:49 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 13:57:31 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 static int	check_sign(const char *str, size_t *i);
 

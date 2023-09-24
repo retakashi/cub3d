@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 17:09:35 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 17:36:26 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 13:58:55 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 int	ft_strcmp(char *str1, char *str2)
 {

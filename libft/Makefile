@@ -1,7 +1,7 @@
 NAME = libft.a
 
 CC = cc
-INCDIR = ../includes
+INCDIR = .
 CFLAGS = -Wall -Wextra -Werror $(addprefix -I,$(INCDIR))
 
 LIBDIR	=	.

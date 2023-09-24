@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 17:19:45 by minabe            #+#    #+#             */
-/*   Updated: 2023/07/18 19:10:17 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 13:59:26 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 char	*ft_substr(char const *s, size_t start, size_t len)
 {

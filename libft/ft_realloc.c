@@ -6,13 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:09:31 by minabe            #+#    #+#             */
-/*   Updated: 2023/07/30 12:12:28 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 13:58:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
-
-#include <stdio.h>
+#include "libft.h"
 
 void	*ft_realloc(void *p, size_t size)
 {

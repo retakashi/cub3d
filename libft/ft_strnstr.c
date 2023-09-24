@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 14:42:58 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 17:37:08 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 13:59:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 char	*ft_strnstr(const char *haystack, char *needle, size_t len)
 {
