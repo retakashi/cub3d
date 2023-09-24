@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:06:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 14:58:59 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 15:06:50 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,30 +83,29 @@ void	set_position(t_game *game, int direction)
 
 static bool	check_nowall(t_game *game, int direction)
 {
-	double	x;
-	double	y;
+	t_vector	pos;
 
 	if (direction == FRONT)
 	{
-		x = game->player.pos.x + game->player.dir.x * MOVE_SPEED;
-		y = game->player.pos.y - game->player.dir.y * MOVE_SPEED;
+		pos.x = game->player.pos.x + game->player.dir.x * MOVE_SPEED;
+		pos.y = game->player.pos.y - game->player.dir.y * MOVE_SPEED;
 	}
 	if (direction == BACK)
 	{
-		x = game->player.pos.x - game->player.dir.x * MOVE_SPEED;
-		y = game->player.pos.y + game->player.dir.y * MOVE_SPEED;
+		pos.x = game->player.pos.x - game->player.dir.x * MOVE_SPEED;
+		pos.y = game->player.pos.y + game->player.dir.y * MOVE_SPEED;
 	}
 	if (direction == LEFT)
 	{
-		x = game->player.pos.x - game->player.dir.y * MOVE_SPEED;
-		y = game->player.pos.y - game->player.dir.x * MOVE_SPEED;
+		pos.x = game->player.pos.x - game->player.dir.y * MOVE_SPEED;
+		pos.y = game->player.pos.y - game->player.dir.x * MOVE_SPEED;
 	}
 	if (direction == RIGHT)
 	{
-		x = game->player.pos.x + game->player.dir.y * MOVE_SPEED;
-		y = game->player.pos.y + game->player.dir.x * MOVE_SPEED;
+		pos.x = game->player.pos.x + game->player.dir.y * MOVE_SPEED;
+		pos.y = game->player.pos.y + game->player.dir.x * MOVE_SPEED;
 	}
-	if (game->map->map[(int)y][(int)x] == '1')
+	if (game->map->map[(int)pos.y][(int)pos.x] == '1')
 		return (false);
 	return (true);
 }
