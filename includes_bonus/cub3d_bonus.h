@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 16:29:40 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 17:44:14 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,13 @@
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 960
 
-# define ROTATE_SPEED M_PI / 60
+# define ROT_INTERVAL 60
 # define MOVE_SPEED 0.15
 
 # define DEBUG 1
 # define HEADER_LEN 6
 
 # define DEFAULT 0
-
-# define FISH_EYE_EFFECT 0
 
 # define TEX_WIDTH 64
 # define TEX_HEIGHT 64
