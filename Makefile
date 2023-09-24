@@ -55,7 +55,7 @@ $(B_OBJDIR)/%.o: $(BONUSDIR)/%.c
 
 clean:
 		$(MAKE) fclean -C $(LIBFTDIR)
-		$(RM) $(OBJS) $(DEPS)
+		$(RM) $(OBJS) $(DEPS) $(B_OBJS) $(B_DEPS)
 
 fclean: clean
 		$(RM) $(NAME) $(LIBFT)
