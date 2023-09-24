@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 16:06:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/16 19:21:12 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/24 15:58:54 by rtakashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,22 @@ void	get_file(char *file, t_map *map, t_header *header)
 	if (fd < 0)
 		ft_error("Failed to open file");
 	tmp = ft_strdup("");
+	if (tmp == NULL)
+		ft_error("Ft_strdup failed");
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (buf == NULL)
 		ft_error("Malloc failed");
 	tmp = read_and_join(tmp, fd, buf);
+	if (tmp == NULL)
+		ft_error("Read_and_join failed");
 	close(fd);
 	splited_file = ft_split(tmp, '\n');
 	ft_free(tmp);
+	if (splited_file == NULL)
+		ft_error("Ft_split failed");
 	get_header(splited_file, header);
 	get_map(splited_file, map);
 	free_2d(splited_file);
-	return ;
 }
 
 static void	get_header(char **file, t_header *header)
@@ -45,8 +50,10 @@ static void	get_header(char **file, t_header *header)
 	int		i;
 
 	i = 0;
-	while (i < 6)
+	while (i < HEADER_LEN)
 	{
+		if (file[i] == NULL)
+			ft_error("Invalid header");
 		if (!ft_strncmp(file[i], "EA ", 3))
 			header->east_tex_path = ft_strdup(file[i] + 3);
 		else if (!ft_strncmp(file[i], "WE ", 3))
@@ -81,6 +88,8 @@ static char	*read_and_join(char *file, int fd, char *buf)
 		tmp = ft_strjoin(file, buf);
 		ft_free(file);
 		file = tmp;
+		if (tmp == NULL)
+			break ;
 	}
 	ft_free(buf);
 	return (file);
@@ -95,12 +104,16 @@ static void	get_map(char **file, t_map *map)
 	map->map = ft_calloc(sizeof(char *), (map->height + 1));
 	if (map->map == NULL)
 		ft_error("Malloc failed");
-	/* 初期位置が確定しているのかわからん。要検討 */
-	i_file = 6;
+	i_file = HEADER_LEN;
 	i_map = 0;
 	while (file[i_file] != NULL)
 	{
 		map->map[i_map] = ft_strdup(file[i_file]);
+		if (map->map[i_map] == NULL)
+		{
+			free_2d(map->map);
+			ft_error("Ft_strdup failed");
+		}	
 		i_file++;
 		i_map++;
 	}
