@@ -1,4 +1,5 @@
 # cub3d
+![gif](https://github.com/retakashi/cub3d/blob/rtakashi_home/cub3D.gif)
 
 ## Overview
 This is a program that uses ray casting to render a maze in "realistic" 3D graphics from a first-person perspective.
