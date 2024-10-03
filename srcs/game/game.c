@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 17:44:34 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/29 20:12:02 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	deal_key(int keycode, t_game *game)
 static void	loop_game(t_game *game)
 {
 	mlx_loop_hook(game->ptr, draw_window, game);
-	mlx_hook(game->win_ptr, ON_KEYDOWN, DEFAULT, deal_key, game);
+	mlx_hook(game->win_ptr, ON_KEYDOWN, 1L << 0, deal_key, game);
 	mlx_hook(game->win_ptr, ON_DESTROY, DEFAULT, end_game, game);
 	mlx_loop(game->ptr);
 }

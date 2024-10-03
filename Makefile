@@ -29,12 +29,14 @@ B_DEPS	=	$(B_OBJS:.o=.d)
 LIBFTDIR = ./libft
 LIBFT = $(LIBFTDIR)/libft.a
 
-LDFLAGS = -lmlx -L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit
-
+# LDFLAGS = -lmlx -L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit
+LDFLAGS = -L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $(NAME)
+# $(NAME): $(OBJS) $(LIBFT)
+# 		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT) ./minilibx-linux/libmlx_Darwin.a
+		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) ./minilibx-linux/libmlx_Darwin.a $(LDFLAGS) -o $(NAME)
 
 $(OBJSDIR)/%.o: $(SRCSDIR)/%.c
 		@mkdir -p $(dir $@)
@@ -47,8 +49,8 @@ $(LIBFT):
 
 bonus: $(BONUS_NAME)
 
-$(BONUS_NAME): $(B_OBJS) $(LIBFT)
-		$(CC) $(CFLAGS) $(B_OBJS) $(LIBFT) $(LDFLAGS) -o $(BONUS_NAME)
+$(BONUS_NAME): $(B_OBJS) $(LIBFT) ./minilibx-linux/libmlx_Darwin.a
+		$(CC) $(CFLAGS) $(B_OBJS) $(LIBFT) ./minilibx-linux/libmlx_Darwin.a $(LDFLAGS) -o $(BONUS_NAME)
 
 $(B_OBJDIR)/%.o: $(BONUSDIR)/%.c
 		@mkdir -p $(dir $@)

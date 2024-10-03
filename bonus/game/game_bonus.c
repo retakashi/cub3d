@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtakashi <rtakashi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/24 16:13:08 by rtakashi         ###   ########.fr       */
+/*   Updated: 2024/10/03 10:13:00 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ static void	init_game(t_game *game, t_map *map, t_header *header)
 static void	loop_game(t_game *game)
 {
 	mlx_loop_hook(game->ptr, draw_window, game);
-	mlx_hook(game->win_ptr, ON_KEYDOWN, DEFAULT, deal_key, game);
+	mlx_hook(game->win_ptr, ON_KEYDOWN, 1L << 0, deal_key, game);
 	mlx_hook(game->win_ptr, ON_DESTROY, DEFAULT, end_game, game);
-	mlx_hook(game->win_ptr, ON_MOUSEMOVE, DEFAULT, mouse_move, game);
+	mlx_hook(game->win_ptr, ON_MOUSEMOVE, 1L<<6, mouse_move, game);
 	mlx_loop(game->ptr);
 }
 
