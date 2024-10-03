@@ -1,5 +1,5 @@
-NAME = cub3D
-BONUS_NAME = cub3D_bonus
+NAME = cub3d
+BONUS_NAME = cub3d_bonus
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -MMD -MP
